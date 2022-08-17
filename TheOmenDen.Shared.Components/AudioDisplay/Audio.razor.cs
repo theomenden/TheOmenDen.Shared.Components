@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
-using TheOmenDen.Shared.Components.Models;
+using TheOmenDen.Shared.Components.AudioDisplay.Models;
 
-namespace TheOmenDen.Shared.Components;
+namespace TheOmenDen.Shared.Components.AudioDisplay;
 
 public partial class Audio : ComponentBase
 {
