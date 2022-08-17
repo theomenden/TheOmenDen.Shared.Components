@@ -2,63 +2,80 @@
   position: absolute;
 }
 
-h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+h6,
+.h6,
+h5,
+.h5,
+h4,
+.h4,
+h3,
+.h3,
+h2,
+.h2,
+h1,
+.h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-weight: 500;
   line-height: 1.2;
 }
 
-h1, .h1 {
+h1,
+.h1 {
   font-size: calc(1.375rem + 1.5vw);
 }
 
 @media (min-width: 1200px) {
-  h1, .h1 {
+  h1,
+.h1 {
     font-size: 2.5rem;
   }
 }
-h2, .h2 {
+h2,
+.h2 {
   font-size: calc(1.325rem + 0.9vw);
 }
 
 @media (min-width: 1200px) {
-  h2, .h2 {
+  h2,
+.h2 {
     font-size: 2rem;
   }
 }
-h3, .h3 {
+h3,
+.h3 {
   font-size: calc(1.3rem + 0.6vw);
 }
 
 @media (min-width: 1200px) {
-  h3, .h3 {
+  h3,
+.h3 {
     font-size: 1.75rem;
   }
 }
-h4, .h4 {
+h4,
+.h4 {
   font-size: calc(1.275rem + 0.3vw);
 }
 
 @media (min-width: 1200px) {
-  h4, .h4 {
+  h4,
+.h4 {
     font-size: 1.5rem;
   }
 }
-h5, .h5 {
+h5,
+.h5 {
   font-size: 1.25rem;
 }
 
-h6, .h6 {
+h6,
+.h6 {
   font-size: 1rem;
 }
 
 p {
   display: inline-block;
-  font-size: 14px;
-  font-weight: 400;
-  margin-bottom: 10px;
-  color: grey;
 }
 
 a {
@@ -66,13 +83,31 @@ a {
   color: #9d57e4;
 }
 
-@media screen and (prefers-color-scheme: dark) {
+@media screen and (max-width: 625px) {
+  .audio-player {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    max-height: fit-content;
+  }
+
+  .cover-art {
+    display: none;
+  }
+}
+@media (prefers-color-scheme: dark) {
   .audio-player {
     background-color: rgba(0, 40, 83, 0.6);
     color: white;
+    border-width: medium;
+    border-color: rgba(219, 219, 219, 0.912) !important;
+    border-style: inset;
+    border-radius: 4px;
   }
 
   .controls {
+    flex: 1;
     background-color: rgba(0, 40, 83, 0.6);
     color: white;
   }
@@ -95,12 +130,6 @@ a {
   border-style: inset;
   border-radius: 4px;
 }
-@media screen and (max-width: 560px) {
-  .audio-player {
-    width: 90vw;
-    background: #002853;
-  }
-}
 
 .info {
   flex: 1;
@@ -109,44 +138,20 @@ a {
 
 .cover-art {
   position: absolute;
-  bottom: 160px;
-  right: -30px;
-  width: 230px;
-  height: 230px;
-  background: url(http://laptevpavel.ru/playground/player/drassed-for-space.jpg);
-  background-size: cover;
+  top: 0%;
+  right: 10%;
+  margin-bottom: 1em;
   transition: all 0.2s;
+  max-width: 100%;
+  height: auto;
 }
-@media screen and (max-width: 560px) {
-  .cover-art {
-    position: relative;
-    width: 100%;
-    height: 80vw;
-    bottom: inherit;
-    right: inherit;
-  }
-}
-@media screen and (max-width: 520px) {
-  .cover-art {
-    position: relative;
-    width: 100%;
-    height: 90vw;
-    bottom: inherit;
-    right: inherit;
-  }
-}
-@media screen and (max-height: 500px) {
-  .cover-art {
-    display: none;
-    width: 0px;
-    height: 0px;
-  }
-}
+
 .cover-art a {
   display: block;
   width: 100%;
   height: 100%;
 }
+
 .cover-art a:hover {
   background: rgba(0, 0, 0, 0.35);
   opacity: 0.2;
@@ -154,45 +159,72 @@ a {
 
 .controls {
   display: flex;
+  flex: row 1;
   width: 100%;
-  height: 100px;
+  height: auto;
   background: #00468C;
-  margin-top: -1rem;
-  padding: 20px;
+  margin-top: 0.85em;
+  margin-bottom: 0.4em;
+  padding: 1.4em;
   box-sizing: border-box;
   color: white;
   transition: all 0.2s;
+  border-radius: 5px;
+  border-style: solid;
 }
+
 .controls_plays {
   flex: 1;
   display: inline-flex;
   justify-content: space-around;
   background-color: #511C51;
-  border-radius: 25em;
+  border-radius: 4em;
   border-color: white;
   border-style: ridge;
 }
+
 .controls_player {
   flex: 1;
   fill: #7FE5A3;
-  display: flex;
+  display: inline-flex;
+  background-color: #1C511C;
+  border-radius: 4em;
+  border-color: white;
+  border-style: ridge;
   justify-content: space-around;
 }
+
+.btn-toolbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 @media screen and (max-width: 420px) {
   .controls {
     flex-direction: column;
     height: 200px;
   }
 }
-
-#plays_btn, #prev_btn, #next_btn {
+#plays_btn,
+#prev_btn,
+#next_btn {
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  width: 26px;
-  max-width: 18px;
+  width: 1.85em;
+  max-width: 1.25em;
+  margin-top: calc(100% - 0.8em);
+  margin-right: calc(30% - 2.5em);
+  margin-left: calc(85% - 2.5rem);
   color: white;
   transition: all 0.2s;
 }
-#plays_btn:hover, #prev_btn:hover, #next_btn:hover {
+
+#plays_btn:hover,
+#prev_btn:hover,
+#next_btn:hover {
   fill: #565349;
 }
 
@@ -200,13 +232,18 @@ a {
   display: none;
 }
 
-#volume_btn, #shuffle_btn, #playlist_btn {
+#volume_btn,
+#shuffle_btn,
+#playlist_btn {
   cursor: pointer;
   width: 23px;
   max-width: 18px;
   transition: all 0.2s;
 }
-#volume_btn:hover, #shuffle_btn:hover, #playlist_btn:hover {
+
+#volume_btn:hover,
+#shuffle_btn:hover,
+#playlist_btn:hover {
   fill: rgba(0, 0, 0, 0.35);
 }
 
@@ -217,11 +254,21 @@ a {
 @-webkit-keyframes progress-bar-stripes {
   0% {
     background-position-x: 1rem;
+    box-shadow: 0 0 40px #9d57e4;
+  }
+  100% {
+    background-position: 1rem;
+    box-shadow: 0 0 40px #9d57e4;
   }
 }
 @keyframes progress-bar-stripes {
   0% {
     background-position-x: 1rem;
+    box-shadow: 0 0 40px #9d57e4;
+  }
+  100% {
+    background-position: 1rem;
+    box-shadow: 0 0 40px #9d57e4;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -246,24 +293,26 @@ a {
   }
 }
 .progressbar_slide {
-  vertical-align: baseline;
+  --bs-progress-border-radius: 0.375rem;
   --bs-progress-height: 1rem;
   --bs-progress-font-size: 0.75rem;
-  --bs-progress-bg: #511C51;
-  --bs-progress-border-radius: 0.375rem;
   --bs-progress-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
   --bs-progress-bar-color: #fff;
-  --bs-progress-bar-bg: #B994B7;
+  --bs-progress-bar-bg: #511C51;
   --bs-progress-bar-transition: width 0.6s ease;
-  display: flex;
-  height: var(--bs-progress-height);
   overflow: hidden;
   font-size: var(--bs-progress-font-size);
-  background-color: var(--bs-progress-bg);
+  display: flex;
+  height: var(--bs-progress-height);
+  width: calc(100% - var(--bs-progress-height) * 0.75);
+  background: rgba(0, 0, 0, 0.25);
   border-radius: var(--bs-progress-border-radius);
-  width: 100%;
-  background: rgba(0, 70, 140, 0.35);
-  height: 1.8em;
+  -webkit-box-shadow: var(--bs-progress-box-shadow);
+  box-shadow: var(--bs-progress-box-shadow);
+  margin-top: calc(9.5% - 2em);
+  padding-top: calc(4% - 2.25em);
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .progressbar_range {
@@ -280,8 +329,8 @@ a {
   transition: var(--bs-progress-bar-transition);
 }
 
-.responisve {
-  --bs-gutter-x: 1.5rem;
+.responsive {
+  --bs-gutter-x: 1.25rem;
   --bs-gutter-y: 0;
   width: 100%;
   padding-right: calc(var(--bs-gutter-x) * 0.5);
@@ -289,3 +338,130 @@ a {
   margin-right: auto;
   margin-left: auto;
 }
+
+.visually-hidden,
+.visually-hidden-focusable:not(:focus):not(:focus-within) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/*button*/
+.button {
+  background-color: transparent;
+  margin-top: 0.4em;
+  margin-bottom: 0.25em;
+  margin-right: 1em;
+  margin-left: 1em;
+  border-style: none;
+  border: 1px 1px 1px 1px #9D57E4;
+}
+
+/* Create a simple white box, and add the shadow for the initial state */
+.button-purple-shadow {
+  position: relative;
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 5px;
+  background-color: #511C51;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Create the hidden pseudo-element */
+/* include the shadow for the end state */
+.button-purple-shadow::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border-radius: 5px;
+  box-shadow: 15px 5px 15px rgba(0, 0, 0, 0.3);
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Scale up the box */
+.button-purple-shadow:hover {
+  -webkit-transform: scale(1.25, 1.25);
+  transform: scale(1.2, 1.2);
+  background-color: #B994B7;
+  color: white;
+}
+
+/* Fade in the pseudo-element with the bigger shadow */
+.button-purple-shadow:hover::after {
+  opacity: 1;
+}
+
+/* Create a simple white box, and add the shadow for the initial state */
+.button-green-shadow {
+  position: relative;
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 5px;
+  background-color: #1C511C;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Create the hidden pseudo-element */
+/* include the shadow for the end state */
+.button-green-shadow::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border-radius: 5px;
+  box-shadow: 15px 5px 15px rgba(0, 0, 0, 0.3);
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Scale up the box */
+.button-green-shadow:hover {
+  -webkit-transform: scale(1.25, 1.25);
+  transform: scale(1.2, 1.2);
+  background-color: #769676;
+  color: white;
+}
+
+/* Fade in the pseudo-element with the bigger shadow */
+.button-green-shadow:hover::after {
+  opacity: 1;
+}
+
+/*end button*/
+/*Progress Text*/
+.progress-text {
+  display: inline-flex;
+  position: absolute;
+  width: 100% !important;
+  text-decoration: solid;
+  justify-content: center;
+  font-size: 1em;
+  font-weight: 400;
+  margin-top: 0.65em;
+  margin-bottom: 0.95em;
+  color: lightgrey;
+}
+
+/*End Progress Text*/
