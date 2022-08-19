@@ -1,12 +1,12 @@
 import { Howl, Howler } from 'howler';
-import { AudioWindow } from 'audiowindow';
+import { AudioWindow } from '../js/AudioWindow';
 
-declare let window: AudioWindow;
+declare const window: AudioWindow;
 
-const audioInstances = {};
+let audioInstances = {};
 
 window.audio = {
-    play: function (dotnetReference, options) {
+    play: (dotnetReference, options: { sources: any; formats: any; html5: any; loop: any; volume: any; }): number => {
 
         const sound = new Howl({
             src: options.sources,
@@ -15,8 +15,8 @@ window.audio = {
             loop: options.loop,
             volume: options.volume,
 
-            onplay: async function (id) {
-                let duration = audio.duration(id);
+            onplay: async (id: number): Promise<void> => {
+                let duration = sound.duration(id);
 
                 if (duration === Infinity || isNaN(duration)) {
                     duration = null;
@@ -24,31 +24,31 @@ window.audio = {
 
                 await dotnetReference.invokeMethodAsync("OnPlayCallback", id, duration);
             },
-            onstop: async function (id) {
+            onstop: async (id: number): Promise<void> => {
                 await dotnetReference.invokeMethodAsync("OnStopCallback", id);
             },
-            onpause: async function (id) {
+            onpause: async (id: number): Promise<void> => {
                 await dotnetReference.invokeMethodAsync("OnPauseCallback", id);
             },
-            onrate: async function (id) {
-                const currentRate = audio.rate();
+            onrate: async (id: number): Promise<void> => {
+                const currentRate = sound.rate();
                 await dotnetReference.invokeMethodAsync("OnRateCallback", id, currentRate);
             },
-            onend: async function (id) {
+            onend: async (id: number): Promise<void> => {
                 await dotnetReference.invokeMethodAsync("OnEndCallback", id);
             },
-            onload: async function () {
+            onload: async (): Promise<void> => {
                 await dotnetReference.invokeMethodAsync("OnLoadCallback");
             },
-            onloaderror: async function (id, error) {
+            onloaderror: async (id: number, error: any): Promise<void> => {
                 await dotnetReference.invokeMethodAsync("OnLoadErrorCallback", id, error);
             },
-            onplayerror: async function (id, error) {
+            onplayerror: async (id: number, error: any): Promise<void> => {
                 await dotnetReference.invokeMethodAsync("OnPlayErrorCallback", id, error);
             }
         });
 
-        let soundId = sound.play();
+        let soundId = sound.play(undefined, false);
 
         audioInstances[soundId] = {
             sound,
@@ -57,20 +57,20 @@ window.audio = {
 
         return soundId;
     },
-    playSound: function (id) {
-        const audio = getAudio(id);
+    playSound: (id: number): void => {
+        const audio = getAudio({ id });
         if (audio) {
             audio.play(id);
         }
     },
-    stop: function (id) {
-        const audio = getAudio(id);
+    stop: (id: number): void => {
+        const audio = getAudio({ id });
         if (audio) {
             audio.stop();
         }
     },
-    pause: function (id) {
-        const audio = getAudio(id);
+    pause: (id: number): void => {
+        const audio = getAudio({ id });
         if (audio?.playing()) {
             audio.pause(id);
             return;
@@ -78,36 +78,36 @@ window.audio = {
 
         audio.play(id);
     },
-    seek: function (id, postiion) {
-        const audio = getAudio(id);
+    seek: (id: number, position: number): void => {
+        const audio = getAudio({ id });
 
         if (audio) {
             audio.seek(position);
         }
     },
-    rate: function (id, rate) {
-        const audio = getAudio(id);
+    rate: (id: number, rate: number): void => {
+        const audio = getAudio({ id });
         if (audio) {
             audio.rate(rate);
         }
     },
-    load: function (id) {
-        const audio = getAudio(id);
+    load: (id: number): void => {
+        const audio = getAudio({ id });
         if (audio) {
             audio.load();
         }
     },
-    unload: function (id) {
-        const audio = getAudio(id);
+    unload: (id: string | number): void => {
+        const audio = getAudio({ id });
         if (audio) {
             audio.unload();
 
             audioInstances[id] = null;
-            delete instances[id];
+            delete audioInstances[id];
         }
     },
-    getIsPlaying: function (id) {
-        const audio = getAudio(id);
+    getIsPlaying: (id: number): boolean => {
+        const audio = getAudio({ id });
 
         if (audio) {
             return audio.playing();
@@ -115,23 +115,23 @@ window.audio = {
 
         return false;
     },
-    getRate: function (id) {
-        const audio = getAudio(id);
+    getRate: (id: number): any => {
+        const audio = getAudio({ id });
         if (audio) {
             return audio.rate();
         }
 
         return 0;
     },
-    getCurrentTime: function (id) {
-        const audio = getAudio(id);
+    getCurrentTime: (id: number): any => {
+        const audio = getAudio({ id });
         if (audio && audio.playing()) {
             const seek = audio.seek();
             return seek === Infinity || isNaN(seek) ? null : seek;
         }
     },
-    getTotalTime: function (id) {
-        const audio = getAudio(id);
+    getTotalTime: (id: number): any => {
+        const audio = getAudio({ id });
 
         if (audio) {
             const duration = audio.duration();
@@ -141,39 +141,34 @@ window.audio = {
 
         return 0;
     },
-    destroy: function () {
+    destroy: (): void => {
         Object.keys(audioInstances).forEach(key => {
             try {
-                audioInstances[key].unload();
-                audioInstances[key] = null;
-                delete audioInstances[key];
-            }
-            catch {
-                // move on, no-operation
+                Howl.unload(key);
+            } catch {
+                // no-op
             }
         });
     }
 };
 
 window.globalAudio = {
-    mute: function (muted) {
+    mute: (muted: any): void => {
         Howler.mute(muted);
     },
-    getCodecs: function () {
-        let codecs: Array<string>;
+    getCodecs: (): string[] => {
+        let codecs: Array<string> = [];
 
-        for (const [key, value] of Object.fromEntries(Howler.codecs)) {
+        for (const [key, value] of Object.entries(Howler.codecs)) {
             if (value) {
                 codecs.push(key);
             }
         }
         return codecs.sort();
     },
-    isCodecSupported: function (extension) {
-        return extension ? Howler.codecs[extension.replace(/^x-/, '')] : false;
-    }
+    isCodecSupported: (extension: string): any => extension ? Howler.codecs[extension.replace(/^x-/, '')] : false
 };
 
-function getAudio(id) {
+function getAudio({ id }: { id: string | number; }): any {
     return audioInstances[id] ? audioInstances[id].sound : null;
 }
