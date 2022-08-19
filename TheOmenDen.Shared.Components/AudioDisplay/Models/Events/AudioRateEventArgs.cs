@@ -1,4 +1,4 @@
-﻿namespace TheOmenDen.Shared.Components.AudioDisplay.Internal;
+﻿namespace TheOmenDen.Shared.Components.AudioDisplay.Models.Events;
 public class AudioRateEventArgs : AudioEventArgs
 {
     /// <summary>

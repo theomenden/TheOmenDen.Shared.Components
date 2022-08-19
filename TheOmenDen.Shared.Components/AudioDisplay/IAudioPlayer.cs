@@ -3,10 +3,24 @@ namespace TheOmenDen.Shared.Components.AudioDisplay;
 
 public interface IAudioPlayer
 {
+    /// <summary>
+    /// Mutes or unmutes all sounds
+    /// </summary>
+    /// <param name="IsMuted"></param>
+    /// <returns></returns>
     public ValueTask Mute(Boolean IsMuted);
 
-    public ValueTask<IEnumerable<Stream>> GetCodecs();
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    public ValueTask<IEnumerable<String>> GetCodecs();
 
-    public ValueTask<Boolean> IsCodeSupported(String? codecExtension);
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="codecExtension"></param>
+    /// <returns></returns>
+    public ValueTask<Boolean> IsCodecSupported(String? codecExtension);
 }
 

@@ -1,6 +1,10 @@
 ﻿[
   {
-    "outputFile": "Audio.razor.css",
+    "outputFile": "AudioDisplay/Audio.razor.css",
     "inputFile": "Styles/Audio.scss"
+  },
+  {
+    "outputFile": "wwwroot/js/AudioJsInterop.min.js",
+    "inputFile": "wwwroot/js/AudioJsInterop.js"
   }
 ]
