@@ -1,4 +1,4 @@
-import { Howl, Howler } from 'howler';
+import { Howl, Howler } from '../js/howler.min.js';
 import { AudioWindow } from '../js/AudioWindow';
 
 declare const window: AudioWindow;
@@ -144,7 +144,7 @@ window.audio = {
     destroy: (): void => {
         Object.keys(audioInstances).forEach(key => {
             try {
-                Howl.unload(key);
+                Howler.unload();
             } catch {
                 // no-op
             }
