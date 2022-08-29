@@ -6,9 +6,9 @@ public interface IAudioPlayer
     /// <summary>
     /// Mutes or unmutes all sounds
     /// </summary>
-    /// <param name="IsMuted"></param>
+    /// <param name="isMuted"></param>
     /// <returns></returns>
-    public ValueTask Mute(Boolean IsMuted);
+    public ValueTask Mute(Boolean isMuted);
 
     /// <summary>
     /// 

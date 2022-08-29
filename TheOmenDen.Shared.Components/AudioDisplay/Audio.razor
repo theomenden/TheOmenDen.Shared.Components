@@ -1,15 +1,18 @@
 ﻿<audio id="audio" autoplay="@Autoplay" muted="@Muted">
-    @foreach (var audioSource in Song.MusicUris)
+    @foreach (var audioSource in _song?.MusicUris ?? Enumerable.Empty<string>())
     {
         <source src="@audioSource">
     }
     Your browser does not support the audio element.
 </audio>
+
+@if(Source is not null)
+{
 <div class="audio-player responsive shadow">
     <div class="cover-art">
         <image src="@Source.Album.ArtworkUri"
-               alt="@Source.Album.Name" 
-               loading="lazy"/>
+               alt="@Source.Album.Name"
+               loading="lazy" />
     </div>
     <div class="info responsive">
         <h2>@Source.Artist.Name</h2>
@@ -86,3 +89,4 @@
         </div>
     </div>
 </div>
+}

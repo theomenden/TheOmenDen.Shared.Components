@@ -20,8 +20,8 @@ public partial class AudioController : IAudioController, IDisposable, IAsyncDisp
     {
         _runtime = runtime ?? throw new ArgumentNullException(nameof(runtime));
 
-        _runtimeReference = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
-                "import", "./_content/TheOmenDen.Shared.Components/wwwroot/exampleJsInterop.js").AsTask());
+        _runtimeReference = new(() => _runtime.InvokeAsync<IJSObjectReference>(
+                "import", "./_content/TheOmenDen.Shared.Components/wwwroot/audiojsinterop.min.js").AsTask());
 
         _dotNetObjectReference = DotNetObjectReference.Create(this);
     }
@@ -46,12 +46,14 @@ public partial class AudioController : IAudioController, IDisposable, IAsyncDisp
 
     public ValueTask<int> PlayAsync(IEnumerable<Uri> resources)
     {
-        if (resources is null || !resources.Any())
+        var resourceList = resources?.ToList() ?? new List<Uri>(1);
+
+        if (resourceList.Any())
         {
             throw new ArgumentNullException(nameof(resources));
         }
 
-        var options = new HowlerConfiguration(resources.Select(l => l.ToString()));
+        var options = new HowlerConfiguration(resourceList.Select(l => l.ToString()));
 
         return PlayAsync(options);
     }
@@ -75,12 +77,25 @@ public partial class AudioController : IAudioController, IDisposable, IAsyncDisp
             throw new ArgumentNullException(nameof(resource));
         }
 
-        var options = new HowlerConfiguration(new [] { resource });
+        var options = new HowlerConfiguration(new[] { resource });
 
         return PlayAsync(options);
     }
 
     public ValueTask<int> PlayAsync(IEnumerable<string> resources)
+    {
+        var resourceList = resources?.ToList() ?? new List<string>(1);
+        if (resourceList.Any())
+        {
+            throw new ArgumentNullException(nameof(resources));
+        }
+
+        var options = new HowlerConfiguration(resourceList);
+
+        return PlayAsync(options);
+    }
+
+    public ValueTask<int> PlayAsync(params string[] resources)
     {
         if (resources is null || !resources.Any())
         {
@@ -92,26 +107,14 @@ public partial class AudioController : IAudioController, IDisposable, IAsyncDisp
         return PlayAsync(options);
     }
 
-    public ValueTask<int> PlayAsync(params string[] resources)
-    {
-        if(resources is null || !resources.Any())
-        {
-            throw new ArgumentNullException(nameof(resources));
-        }
-
-        var options = new HowlerConfiguration(resources);
-
-        return PlayAsync(options);
-    }
-
     public ValueTask<int> PlayAsync(byte[] audio, string mimetype)
     {
-        if(audio is null || !audio.Any())
+        if (audio is null || !audio.Any())
         {
             throw new ArgumentNullException(nameof(audio));
         }
 
-        if(String.IsNullOrWhiteSpace(mimetype))
+        if (String.IsNullOrWhiteSpace(mimetype))
         {
             throw new ArgumentNullException(nameof(mimetype));
         }
@@ -120,16 +123,15 @@ public partial class AudioController : IAudioController, IDisposable, IAsyncDisp
 
         var html5AudioUrl = $"data:{mimetype};base64,{audioBase64}";
 
-        var options = new HowlerConfiguration(new[] {html5AudioUrl});
+        var options = new HowlerConfiguration(new[] { html5AudioUrl });
 
         return _runtime.InvokeAsync<int>("howl.play", _dotNetObjectReference, options);
     }
 
     public ValueTask<int> PlayAsync(HowlerConfiguration configuration)
     {
-        if(configuration is not null 
-            && configuration.Sources is not null 
-            && !configuration.Sources.Any())
+        if (configuration?.Sources is not null
+           && !configuration.Sources.Any())
         {
             throw new ArgumentNullException(nameof(configuration.Sources));
         }
@@ -137,67 +139,97 @@ public partial class AudioController : IAudioController, IDisposable, IAsyncDisp
         return _runtime.InvokeAsync<int>("howl.play", _dotNetObjectReference, configuration);
     }
     #endregion
-    public ValueTask RateAsync(int soundId, double rate)
+    #region Audio Manipulation Methods
+    public async ValueTask RateAsync(int soundId, double rate)
     {
-        return _runtime.InvokeVoidAsync("howl.rate", soundId, rate);
+        var runtime = await _runtimeReference.Value;
+
+        await runtime.InvokeVoidAsync("howl.rate", soundId, rate);
     }
 
-    public ValueTask SeekAsync(int soundId, TimeSpan position)
+    public async ValueTask SeekAsync(int soundId, TimeSpan position)
     {
-        return _runtime.InvokeVoidAsync("howl.seek", soundId, position.TotalSeconds);
+        var runtime = await _runtimeReference.Value;
+
+        await runtime.InvokeVoidAsync("howl.seek", soundId, position.TotalSeconds);
     }
 
-    public ValueTask StopAsync(int soundId)
+    public async ValueTask StopAsync(int soundId)
     {
-        return _runtime.InvokeVoidAsync("howl.stop", soundId);
+        var runtime = await _runtimeReference.Value;
+
+        await runtime.InvokeVoidAsync("howl.stop", soundId);
     }
 
-    public ValueTask PauseAsync(int soundId)
+    public async ValueTask PauseAsync(int soundId)
     {
-        return _runtime.InvokeVoidAsync("howl.pause", soundId);
+        var runtime = await _runtimeReference.Value;
+
+        await runtime.InvokeVoidAsync("howl.pause", soundId);
     }
 
-    public ValueTask LoadAsync(int soundId) => _runtime.InvokeVoidAsync("howl.load", soundId);
+    public async ValueTask LoadAsync(int soundId)
+    {
+        var runtime = await _runtimeReference.Value;
 
-    public ValueTask UnloadAsync(int soundId) => _runtime.InvokeVoidAsync("howl.unload", soundId);
+        await runtime.InvokeVoidAsync("howl.load", soundId);
+    }
+
+    public async ValueTask UnloadAsync(int soundId)
+    {
+        var runtime = await _runtimeReference.Value;
+
+        await runtime.InvokeVoidAsync("howl.unload", soundId);
+    }
+    #endregion
     #region Timing Methods
     public async ValueTask<TimeSpan> GetCurrentTimeAsync(int soundId)
     {
-        var timeInSeconds = await _runtime.InvokeAsync<double?>("howl.getCurrentTime", soundId);
-        
+        var runtime = await _runtimeReference.Value;
+
+        var timeInSeconds = await runtime.InvokeAsync<double?>("howl.getCurrentTime", soundId);
+
         return ConvertToTimespan(timeInSeconds);
     }
 
     public async ValueTask<TimeSpan> GetTotalTimeAsync(int soundId)
     {
-        var timeInSeconds = await _runtime.InvokeAsync<double?>("howl.getTotalTime", soundId);
+        var runtime = await _runtimeReference.Value;
+
+
+        var timeInSeconds = await runtime.InvokeAsync<double?>("howl.getTotalTime", soundId);
 
         return ConvertToTimespan(timeInSeconds);
     }
     #endregion
-    public async ValueTask<bool> IsCurrentlyPlayingAsync(int soundId) => await _runtime.InvokeAsync<bool>("howl.getIsPlaying", soundId);
+    public async ValueTask<bool> IsCurrentlyPlayingAsync(int soundId)
+    {
+        var runtime = await _runtimeReference.Value;
 
+        return await runtime.InvokeAsync<bool>("howl.getIsPlaying", soundId);
+    }
     #region Private Methods
     private static TimeSpan ConvertToTimespan(Double? value)
     {
         return value is null ? TimeSpan.Zero : TimeSpan.FromSeconds(value.Value);
     }
     #endregion
-
     #region Reference Destruction
     protected virtual void Dispose(bool disposing)
     {
-        if (!_isDisposed)
+        if (_isDisposed)
         {
-            if (disposing)
-            {
-                _runtime.InvokeVoidAsync("howl.destroy");
-
-                _dotNetObjectReference.Dispose();
-            }
-
-            _isDisposed = true;
+            return;
         }
+
+        if (disposing)
+        {
+            _runtime.InvokeVoidAsync("howl.destroy");
+
+            _dotNetObjectReference.Dispose();
+        }
+
+        _isDisposed = true;
     }
 
     public void Dispose()
@@ -217,6 +249,7 @@ public partial class AudioController : IAudioController, IDisposable, IAsyncDisp
 
             _isDisposed = true;
         }
+
         GC.SuppressFinalize(this);
         return ValueTask.CompletedTask;
     }

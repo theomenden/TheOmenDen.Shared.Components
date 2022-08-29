@@ -9,6 +9,7 @@ public partial class AudioController
     public event Action<EventArgs>? OnLoad;
     public event Action<AudioErrorEventArgs>? OnLoadError;
     public event Action<AudioEventArgs>? OnStop;
+    public event Action<AudioEventArgs>? OnPause;
     public event Action<AudioErrorEventArgs>? OnStopError;
     public event Action<AudioEventArgs>? OnEnd;
     public event Action<AudioEventArgs>? OnVolume;

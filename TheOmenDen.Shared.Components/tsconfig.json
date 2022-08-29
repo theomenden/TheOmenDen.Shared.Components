@@ -7,8 +7,10 @@
     "sourceMap": true,
     "target": "ES6"
   },
-  "exclude": [
-    "node_modules",
+  "include": [
     "wwwroot"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
