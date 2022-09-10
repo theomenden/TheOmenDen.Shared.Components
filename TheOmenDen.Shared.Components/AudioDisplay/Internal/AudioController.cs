@@ -1,13 +1,14 @@
 ﻿using Microsoft.JSInterop;
 using TheOmenDen.Shared.Components.AudioDisplay.Models.Options;
 using TheOmenDen.Shared.Extensions;
+using TheOmenDen.Shared.Guards;
 
 namespace TheOmenDen.Shared.Components.AudioDisplay.Internal;
-public partial class AudioController : IAudioController, IDisposable, IAsyncDisposable
+public partial class AudioController : IAudioController, IAsyncDisposable
 {
     #region Private fields
-    private readonly IJSRuntime _runtime;
-
+    private const string ImportStatement = "import";
+    private const string JsImportPath = "./_content/TheOmenDen.Shared.Components/wwwroot/audiojsinterop.min.js";
     private readonly AsyncLazyInitializer<IJSObjectReference> _runtimeReference;
 
     private readonly DotNetObjectReference<AudioController> _dotNetObjectReference;
@@ -18,18 +19,18 @@ public partial class AudioController : IAudioController, IDisposable, IAsyncDisp
     #region Constructors
     public AudioController(IJSRuntime runtime)
     {
-        _runtime = runtime ?? throw new ArgumentNullException(nameof(runtime));
-
-        _runtimeReference = new(() => _runtime.InvokeAsync<IJSObjectReference>(
-                "import", "./_content/TheOmenDen.Shared.Components/wwwroot/audiojsinterop.min.js").AsTask());
+        _runtimeReference = new(() => runtime.InvokeAsync<IJSObjectReference>(
+                ImportStatement, JsImportPath).AsTask());
 
         _dotNetObjectReference = DotNetObjectReference.Create(this);
     }
     #endregion
     #region Play Methods
-    public ValueTask PlayAsync(Int32 soundId)
+    public async ValueTask PlayAsync(Int32 soundId)
     {
-        return _runtime.InvokeVoidAsync("howl.playSound", soundId);
+        var runtime = await _runtimeReference.Value;
+
+        await runtime.InvokeVoidAsync("howl.playSound", soundId);
     }
 
     public ValueTask<int> PlayAsync(Uri resource)
@@ -107,36 +108,30 @@ public partial class AudioController : IAudioController, IDisposable, IAsyncDisp
         return PlayAsync(options);
     }
 
-    public ValueTask<int> PlayAsync(byte[] audio, string mimetype)
+    public async ValueTask<int> PlayAsync(byte[] audio, string mimeType)
     {
-        if (audio is null || !audio.Any())
-        {
-            throw new ArgumentNullException(nameof(audio));
-        }
+        Guard.FromEmptyCollection(audio, nameof(audio));
 
-        if (String.IsNullOrWhiteSpace(mimetype))
-        {
-            throw new ArgumentNullException(nameof(mimetype));
-        }
+        Guard.FromNullOrWhitespace<ArgumentNullException>(mimeType);
 
         var audioBase64 = Convert.ToBase64String(audio);
 
-        var html5AudioUrl = $"data:{mimetype};base64,{audioBase64}";
+        var html5AudioUrl = $"data:{mimeType};base64,{audioBase64}";
 
         var options = new HowlerConfiguration(new[] { html5AudioUrl });
 
-        return _runtime.InvokeAsync<int>("howl.play", _dotNetObjectReference, options);
+        var runtime = await _runtimeReference.Value;
+
+        return await runtime.InvokeAsync<int>("howl.play", _dotNetObjectReference, options);
     }
 
-    public ValueTask<int> PlayAsync(HowlerConfiguration configuration)
+    public async ValueTask<int> PlayAsync(HowlerConfiguration configuration)
     {
-        if (configuration?.Sources is not null
-           && !configuration.Sources.Any())
-        {
-            throw new ArgumentNullException(nameof(configuration.Sources));
-        }
+        Guard.FromEmptyCollection(configuration.Sources, nameof(configuration));
 
-        return _runtime.InvokeAsync<int>("howl.play", _dotNetObjectReference, configuration);
+        var runtime = await _runtimeReference.Value;
+
+        return await runtime.InvokeAsync<int>("howl.play", _dotNetObjectReference, configuration);
     }
     #endregion
     #region Audio Manipulation Methods
@@ -215,35 +210,18 @@ public partial class AudioController : IAudioController, IDisposable, IAsyncDisp
     }
     #endregion
     #region Reference Destruction
-    protected virtual void Dispose(bool disposing)
-    {
-        if (_isDisposed)
-        {
-            return;
-        }
-
-        if (disposing)
-        {
-            _runtime.InvokeVoidAsync("howl.destroy");
-
-            _dotNetObjectReference.Dispose();
-        }
-
-        _isDisposed = true;
-    }
-
-    public void Dispose()
-    {
-        // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-        Dispose(disposing: true);
-        GC.SuppressFinalize(this);
-    }
-
-    public ValueTask DisposeAsync()
+    public async ValueTask DisposeAsync()
     {
         if (!_isDisposed)
         {
-            _runtime.InvokeVoidAsync("howl.destroy");
+            if (_runtimeReference.IsValueCreated)
+            {
+                var module = await _runtimeReference.Value;
+                
+                await module.InvokeVoidAsync("howl.destroy");
+                
+                await module.DisposeAsync();
+            }
 
             _dotNetObjectReference.Dispose();
 
@@ -251,7 +229,6 @@ public partial class AudioController : IAudioController, IDisposable, IAsyncDisp
         }
 
         GC.SuppressFinalize(this);
-        return ValueTask.CompletedTask;
     }
     #endregion
 }

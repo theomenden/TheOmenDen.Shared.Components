@@ -95,7 +95,7 @@ public partial class Audio : ComponentBase
     {
         foreach (var id in Source.Song.MusicUris)
         {
-            await AudioController.PauseAsync(id);
+            await AudioController.PauseAsync(Int32.Parse(id));
         }
     }
 }

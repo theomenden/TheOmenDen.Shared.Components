@@ -6,5 +6,9 @@
   {
     "outputFile": "wwwroot/js/AudioJsInterop.min.js",
     "inputFile": "wwwroot/js/AudioJsInterop.js"
+  },
+  {
+    "outputFile": "EmojiPicker/EmojiPicker.razor.css",
+    "inputFile": "Styles/EmojiPicker.scss"
   }
 ]
