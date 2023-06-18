@@ -18,19 +18,14 @@
 
 	<ItemGroup>
 		<Compile Remove="Models\**" />
-		<Compile Remove="NewFolder\**" />
 		<Content Remove="Models\**" />
-		<Content Remove="NewFolder\**" />
 		<EmbeddedResource Remove="Models\**" />
-		<EmbeddedResource Remove="NewFolder\**" />
 		<None Remove="Models\**" />
-		<None Remove="NewFolder\**" />
 		<TypeScriptCompile Remove="Models\**" />
-		<TypeScriptCompile Remove="NewFolder\**" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Remove="compilerconfig.json" />
+		<Content Remove="bundleconfig.json" />
 	</ItemGroup>
 
 
@@ -55,12 +50,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="compilerconfig.json" />
+		<None Include="bundleconfig.json" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="ReCaptcha\DependencyInjection\" />
-		<Folder Include="wwwroot\js\" />
+		<Folder Include="wwwroot\js\Compiled\" />
 	</ItemGroup>
 
 </Project>
