@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "TheOmenDen.Shared.Components": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "MSBuildDebugEngine": "1"
+      }
+    }
+  }
+}

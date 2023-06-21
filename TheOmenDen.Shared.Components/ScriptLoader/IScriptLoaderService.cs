@@ -1,4 +1,4 @@
-﻿using TheOmenDen.Shared.Components.ScriptLoader.Options;
+﻿using TheOmenDen.Shared.Components.Options;
 
 namespace TheOmenDen.Shared.Components.ScriptLoader;
 

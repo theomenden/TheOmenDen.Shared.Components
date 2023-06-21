@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using TheOmenDen.Shared.Components.ScriptLoader;
 
-namespace TheOmenDen.Shared.Components.ScriptLoader.DependencyInjection;
+namespace TheOmenDen.Shared.Components.DependencyInjection;
 public static class ServiceCollectionExtensions
 {
     /// <summary>

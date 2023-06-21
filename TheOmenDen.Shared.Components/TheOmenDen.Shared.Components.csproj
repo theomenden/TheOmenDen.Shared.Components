@@ -1,36 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
-
 	<PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<TypeScriptTarget>ESNext</TypeScriptTarget>
+		<TypeScriptRemoveComments>True</TypeScriptRemoveComments>
 	</PropertyGroup>
-
 	<PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<TypeScriptTarget>ESNext</TypeScriptTarget>
+		<TypeScriptRemoveComments>True</TypeScriptRemoveComments>
 	</PropertyGroup>
-
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
 	</PropertyGroup>
-
-	<ItemGroup>
-		<Compile Remove="Models\**" />
-		<Content Remove="Models\**" />
-		<EmbeddedResource Remove="Models\**" />
-		<None Remove="Models\**" />
-		<TypeScriptCompile Remove="Models\**" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Content Remove="bundleconfig.json" />
-	</ItemGroup>
-
-
+	<PropertyGroup>
+		<ClientAssetsDirectory>assets</ClientAssetsDirectory>
+	</PropertyGroup>
 	<ItemGroup>
 		<SupportedPlatform Include="browser" />
+		<Content Update="assets\**" Pack="false" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -48,13 +38,4 @@
 		<PackageReference Include="TheOmenDen.Shared" Version="2023.3.25.112" />
 		<PackageReference Include="UnicodeInformation" Version="2.7.1" />
 	</ItemGroup>
-
-	<ItemGroup>
-		<None Include="bundleconfig.json" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="wwwroot\js\Compiled\" />
-	</ItemGroup>
-
 </Project>

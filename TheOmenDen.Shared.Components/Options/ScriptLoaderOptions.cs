@@ -1,4 +1,4 @@
-﻿namespace TheOmenDen.Shared.Components.ScriptLoader.Options;
+﻿namespace TheOmenDen.Shared.Components.Options;
 /// <summary>
 /// Provides a set of options that can be used to configure how an HTML Script Element will render to load a script.
 /// </summary>
@@ -13,7 +13,7 @@ public sealed class ScriptLoaderOptions
     /// <remarks>
     /// Optional.
     /// </remarks>
-    public string Id { get; set; } = String.Empty;
+    public string Id { get; set; } = string.Empty;
     /// <summary>
     /// Determines if the script should be loaded asynchronously using the <c>async</c> attribute
     /// </summary>

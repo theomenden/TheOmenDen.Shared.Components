@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.JSInterop;
-using TheOmenDen.Shared.Components.ScriptLoader.Options;
+using TheOmenDen.Shared.Components.Options;
 
 namespace TheOmenDen.Shared.Components.ScriptLoader;
 
@@ -20,9 +20,9 @@ internal sealed class ScriptLoaderService : IScriptLoaderService
     }
 
     /// <inheritdoc/>
-    public async Task LoadScriptAsync(string url, ScriptLoaderOptions options,
-        CancellationToken cancellationToken = default)
-        => await LoadScriptsAsync(new List<string> { url }, options, cancellationToken).ConfigureAwait(false);
+    public Task LoadScriptAsync(string url, ScriptLoaderOptions options,
+                                CancellationToken cancellationToken = default)
+        => LoadScriptsAsync(new List<string> { url }, options, cancellationToken);
 
     /// <inheritdoc/>
     public async Task LoadScriptsAsync(IEnumerable<string> urls, ScriptLoaderOptions options,
@@ -37,7 +37,7 @@ internal sealed class ScriptLoaderService : IScriptLoaderService
                 break;
             }
 
-            if (isAbleToUseInProcessRuntime())
+            if (IsAbleToUseInProcessRuntime())
             {
                 await _jsInProcessRuntime!
                     .InvokeVoidAsync(ScriptLoader, cancellationToken, url, options)
@@ -54,9 +54,10 @@ internal sealed class ScriptLoaderService : IScriptLoaderService
     }
 
     /// <inheritdoc/>
+    /// <exception cref="NotSupportedException">The current JSRuntime does not support synchronous operations. Synchronous script loading is only supported in Blazor WebAssembly</exception>
     public void LoadScript(string url, ScriptLoaderOptions options)
     {
-        if (!isAbleToUseInProcessRuntime())
+        if (!IsAbleToUseInProcessRuntime())
         {
             _logger.LogError("The current JSRuntime does not support synchronous operations. Synchronous script loading is only supported in Blazor WebAssembly");
             throw new NotSupportedException("The current JSRuntime does not support synchronous operations. Synchronous script loading is only supported in Blazor WebAssembly");
@@ -66,5 +67,5 @@ internal sealed class ScriptLoaderService : IScriptLoaderService
 
     }
 
-    private bool isAbleToUseInProcessRuntime() => _jsInProcessRuntime is not null;
+    private bool IsAbleToUseInProcessRuntime() => _jsInProcessRuntime is not null;
 }
