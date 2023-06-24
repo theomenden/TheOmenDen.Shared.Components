@@ -38,4 +38,8 @@
 		<PackageReference Include="TheOmenDen.Shared" Version="2023.3.25.112" />
 		<PackageReference Include="UnicodeInformation" Version="2.7.1" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="assets\dist\" />
+	</ItemGroup>
 </Project>

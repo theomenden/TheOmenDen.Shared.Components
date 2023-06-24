@@ -1,16 +1,24 @@
-﻿export interface IScriptLoaderOptions {
-    id?: string;
-    isAsync?: boolean;
-    isDeferred?: boolean;
-    appendedTo?: "head" | "body";
-    maxRetries?: number;
-    retryInterval?: number;
-}
+﻿import { IScriptLoaderOptions } from "./IScriptLoaderOptions";
 
 interface IScriptLoaderContract {
+    /**
+     * Loads a script from a given url
+     *
+     * @param {string} url - The url of the script to load
+     * @param {IScriptLoaderOptions} options - Options for the script loader
+     * @returns {Promise<void>}
+     *
+     * @throws {Error}
+     * Thrown when the script fails to load after the max retries
+     *
+     * @public 
+     */
     loadScript: (url: string, options: IScriptLoaderOptions) => Promise<void>;
 }
 
+/**
+ A simple utility that can be used to load a script tag into your application.
+ */
 export class ScriptLoader implements IScriptLoaderContract {
     private _loadedScripts: Set<string> = new Set<string>();
     private _targetElement: HTMLElement;
@@ -102,11 +110,5 @@ export class ScriptLoader implements IScriptLoaderContract {
 
     private logOutError(error: string): void {
         console.error(`[ScriptLoader]: ${error}`);
-    }
-}
-
-declare global {
-    interface Window {
-        scriptLoader: ScriptLoader;
     }
 }

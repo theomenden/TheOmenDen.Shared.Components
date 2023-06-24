@@ -1,13 +1,12 @@
 ﻿import { ScriptLoader } from "./dynamicScriptLoader";
-import { ReCaptchaInterop } from "./reCAPTCHAInterop";
+import { CaptchaLoader } from "./reCAPTCHAInterop";
 
-document.addEventListener('readystatechange', ev => {
-    if (document.readyState === 'complete') {
-        const text = document.createElement('p');
-        text.innerText = 'Hello from The Omen Den.Shared.Components!';
-        document.body.appendChild(text);
+declare global {
+    interface Window {
+        scriptLoader: ScriptLoader;
+        captchaLoader: CaptchaLoader;
     }
-});
+}
 
 (window as any).scriptLoader = new ScriptLoader();
-(window as any).reCaptchaInterop = new ReCaptchaInterop();
+(window as any).reCaptchaInterop = new CaptchaLoader();

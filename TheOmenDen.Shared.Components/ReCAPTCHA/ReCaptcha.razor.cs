@@ -5,19 +5,49 @@ using Microsoft.JSInterop;
 using TheOmenDen.Shared.Components.Options;
 
 namespace TheOmenDen.Shared.Components.ReCAPTCHA;
-
-public partial class ReCaptcha : ComponentBase, IDisposable
+/// <summary>
+/// A reCAPTCHA component for Blazor - meant for ReCaptcha V3
+/// </summary>
+/// <remarks>
+/// <para>YOU ARE RESPONSIBLE FOR VERIFYING THE TOKEN IN YOUR APPLICATION</para>
+/// <para>See <a href="https://developers.google.com/recaptcha/docs/v3">reCAPTCHA V3 docs</a> for more information</para>
+/// </remarks>
+public partial class ReCaptcha : ComponentBase, IAsyncDisposable
 {
+    /// <summary>
+    /// The site key for the reCAPTCHA
+    /// </summary>
     [Parameter] public string? SiteKey { get; set; }
+    /// <summary>
+    /// The ID of the element to render the reCAPTCHA in 
+    ///  Defaults to "recaptcha_container"
+    /// </summary>
     [Parameter] public string? ElementId { get; set; } = "recaptcha_container";
+    /// <summary>
+    /// If you need to use the recaptcha.net endpoint, set this to true
+    /// </summary>
+    /// <remarks>See <a href="https://developers.google.com/recaptcha/docs/faq#can-i-use-recaptcha-globally">this part of the docs for more details</a></remarks>
     [Parameter] public bool? UseRecaptchaNet { get; set; } = false;
+    /// <summary>
+    /// If you are using reCAPTCHA Enterprise, set this to true
+    /// </summary>
     [Parameter] public bool? UseEnterprise { get; set; } = false;
+    /// <summary>
+    /// Allows you to hide the reCAPTCHA badge
+    /// </summary>
     [Parameter] public bool? HideBadge { get; set; } = false;
+
 
     [Parameter, EditorRequired] public EventCallback<string> OnCallback { get; set; }
 
+    /// <summary>
+    /// An event that is invoked when the reCAPTCHA token expires
+    /// </summary>
     [Parameter, EditorRequired] public EventCallback<string> OnExpired { get; set; }
 
+    /// <summary>
+    /// An event that is invoked when an error occurs with the reCAPTCHA
+    /// </summary>
     [Parameter, EditorRequired] public EventCallback<string> OnError { get; set; }
 
     [Inject] protected IJSRuntime JSRuntime { get; init; }
@@ -29,6 +59,7 @@ public partial class ReCaptcha : ComponentBase, IDisposable
     private RenderParameters _renderParameters = RenderParameters.Default;
 
     private ReCaptchaLoaderOptions? _options;
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -42,7 +73,7 @@ public partial class ReCaptcha : ComponentBase, IDisposable
 
                 _dotNetObjectReference = DotNetObjectReference.Create(this);
 
-                await JSRuntime!.InvokeVoidAsync("window.reCaptchaInterop.loadCaptchaAsync",
+                await JSRuntime!.InvokeVoidAsync("window.reCaptchaInterop.loadAsync",
                         SiteKey, _options)
                     .ConfigureAwait(false);
             }
@@ -53,6 +84,12 @@ public partial class ReCaptcha : ComponentBase, IDisposable
         }
     }
 
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="response"></param>
+    /// <returns><see cref="Task"/></returns>
     [JSInvokable, EditorBrowsable(EditorBrowsableState.Never)]
     public virtual async Task InvokeCallbackAsync(string response)
     {
@@ -62,6 +99,11 @@ public partial class ReCaptcha : ComponentBase, IDisposable
         Logger.LogInformation("[Captcha Callback]: reCAPTCHA callback invoked");
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="response"></param>
+    /// <returns><see cref="Task"/></returns>
     [JSInvokable, EditorBrowsable(EditorBrowsableState.Never)]
     public virtual async Task InvokeExpiredAsync(string response)
     {
@@ -71,6 +113,11 @@ public partial class ReCaptcha : ComponentBase, IDisposable
         Logger.LogInformation("[Captcha Expired]: reCAPTCHA expired");
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="response"></param>
+    /// <returns><see cref="Task"/></returns>
     [JSInvokable, EditorBrowsable(EditorBrowsableState.Never)]
     public virtual async Task InvokeErrorAsync(string response)
     {
@@ -80,10 +127,16 @@ public partial class ReCaptcha : ComponentBase, IDisposable
         Logger.LogError("[Captcha Error]: reCAPTCHA error");
     }
 
-    /// <exception cref="ArgumentNullException"><paramref name="obj" /> is <see langword="null" />.</exception>
-    public void Dispose()
+    /// <inheritdoc />
+    public async ValueTask DisposeAsync()
     {
-        _dotNetObjectReference?.Dispose();
+        if (_dotNetObjectReference is not null)
+        {
+            await JSRuntime.InvokeVoidAsync("window.reCaptchaInterop.resetAsync")
+                               .ConfigureAwait(false);
+            _dotNetObjectReference?.Dispose();
+            _dotNetObjectReference = null;
+        }
         GC.SuppressFinalize(this);
     }
 }
