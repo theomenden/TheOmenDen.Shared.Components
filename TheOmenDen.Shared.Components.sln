@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheOmenDen.Shared.Components", "TheOmenDen.Shared.Components\TheOmenDen.Shared.Components.csproj", "{D12D0AC7-47E0-4EC0-9F9F-DBC3B7492C4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheOmenDen.Components.Demo", "TheOmenDen.Components.Demo\TheOmenDen.Components.Demo.csproj", "{362CDDD1-F75C-4954-887B-016B65CFE7E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D12D0AC7-47E0-4EC0-9F9F-DBC3B7492C4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D12D0AC7-47E0-4EC0-9F9F-DBC3B7492C4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D12D0AC7-47E0-4EC0-9F9F-DBC3B7492C4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{362CDDD1-F75C-4954-887B-016B65CFE7E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{362CDDD1-F75C-4954-887B-016B65CFE7E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{362CDDD1-F75C-4954-887B-016B65CFE7E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{362CDDD1-F75C-4954-887B-016B65CFE7E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

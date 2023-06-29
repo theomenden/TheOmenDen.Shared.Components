@@ -14,9 +14,17 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 		<TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
+		<IsPackable>true</IsPackable>
+		<IsShipping>true</IsShipping>
+		<IncludeBuildOutput>false</IncludeBuildOutput>
 	</PropertyGroup>
-	
-		<ItemGroup>
+
+	<ItemGroup>
+		<None Update="build\**" Pack="true" PackagePath="%(Identity)" />
+	</ItemGroup>
+
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.8" />
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.4" />
@@ -33,77 +41,66 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="assets\dist\" />
+		<Folder Include="assets\dist\" />
 	</ItemGroup>
- <ItemGroup>
-    <SupportedPlatform Include="browser" />
-    <Content Update="assets\**" Pack="false" />
-  </ItemGroup>
 
-  <PropertyGroup>
-    <ClientAssetsDirectory Condition="'$(ClientAssetsDirectory)' == ''">assets\</ClientAssetsDirectory>
-    <ClientAssetsRestoreInputs Condition="'$(ClientAssetsRestoreInputs)' == ''">$(ClientAssetsDirectory)package-lock.json;$(ClientAssetsDirectory)package.json</ClientAssetsRestoreInputs>
-    <ClientAssetsRestoreOutputs Condition="'$(ClientAssetsRestoreOutputs)' == ''">$(ClientAssetsDirectory)node_modules\.package-lock.json</ClientAssetsRestoreOutputs>
-    <ClientAssetsRestoreCommand Condition="'$(ClientAssetsRestoreCommand)' == ''">npm ci</ClientAssetsRestoreCommand>
-    <ClientAssetsBuildCommand Condition="'$(ClientAssetsBuildCommand)' == ''">npm run build:$(Configuration)</ClientAssetsBuildCommand>
-    <ClientAssetsBuildOutputParameter Condition="'$(ClientAssetsBuildOutputParameter)' == ''">--output-path</ClientAssetsBuildOutputParameter>
+	<PropertyGroup>
+		<ClientAssetsDirectory Condition="'$(ClientAssetsDirectory)' == ''">assets\</ClientAssetsDirectory>
+		<ClientAssetsRestoreInputs Condition="'$(ClientAssetsRestoreInputs)' == ''">$(ClientAssetsDirectory)package-lock.json;$(ClientAssetsDirectory)package.json</ClientAssetsRestoreInputs>
+		<ClientAssetsRestoreOutputs Condition="'$(ClientAssetsRestoreOutputs)' == ''">$(ClientAssetsDirectory)node_modules\.package-lock.json</ClientAssetsRestoreOutputs>
+		<ClientAssetsRestoreCommand Condition="'$(ClientAssetsRestoreCommand)' == ''">npm ci</ClientAssetsRestoreCommand>
+		<ClientAssetsBuildCommand Condition="'$(ClientAssetsBuildCommand)' == ''">npm run build:$(Configuration)</ClientAssetsBuildCommand>
+		<ClientAssetsBuildOutputParameter Condition="'$(ClientAssetsBuildOutputParameter)' == ''">--output-path</ClientAssetsBuildOutputParameter>
 
-    <ClientAssetsRestoreInputs>$(MSBuildProjectFile);$(ClientAssetsRestoreInputs)</ClientAssetsRestoreInputs>
+		<ClientAssetsRestoreInputs>$(MSBuildProjectFile);$(ClientAssetsRestoreInputs)</ClientAssetsRestoreInputs>
 
-    <!-- Run restore only once for multi targeting builds -->
-    <ClientAssetsRestoreBeforeTargets Condition="'$(TargetFramework)' == ''">DispatchToInnerBuilds</ClientAssetsRestoreBeforeTargets>
-    <!-- Allow multitargeting projects to choose the target framework in which they run by setting this value to true only for a given target framework -->
-    <ShouldRunClientAssetsBuild Condition="'$(ShouldRunClientAssetsBuild)' == ''">true</ShouldRunClientAssetsBuild>
-  </PropertyGroup>
+		<!-- Run restore only once for multi targeting builds -->
+		<ClientAssetsRestoreBeforeTargets Condition="'$(TargetFramework)' == ''">DispatchToInnerBuilds</ClientAssetsRestoreBeforeTargets>
+		<!-- Allow multitargeting projects to choose the target framework in which they run by setting this value to true only for a given target framework -->
+		<ShouldRunClientAssetsBuild Condition="'$(ShouldRunClientAssetsBuild)' == ''">true</ShouldRunClientAssetsBuild>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<ClientAssetsInputs Include="$(ClientAssetsDirectory)**" Exclude="$(DefaultItemExcludes)" />
-		<ProjectCapability Include="TheOmenDen.Shared.Components" />
+		<ProjectCapability Include="TheOmenDenSharedComponents" />
 	</ItemGroup>
 
-	<Target Name="ClientAssetsRestore"
-	        BeforeTargets="$(ClientAssetsRestoreBeforeTargets)"
-	        Inputs="$(ClientAssetsRestoreInputs)"
-	        Outputs="$(ClientAssetsRestoreOutputs)">
+	<Target Name="ClientAssetsRestore" BeforeTargets="$(ClientAssetsRestoreBeforeTargets)" Inputs="$(ClientAssetsRestoreInputs)" Outputs="$(ClientAssetsRestoreOutputs)">
 		<Message Importance="high" Text="Running $(ClientAssetsRestoreCommand)..." />
 		<Exec Command="$(ClientAssetsRestoreCommand)" WorkingDirectory="$(ClientAssetsDirectory)" />
 	</Target>
 
-	<Target Name="ClientAssetsBuild"
-			Condition="'$(ShouldRunClientAssetsBuild)' == 'true'"
-			DependsOnTargets="ClientAssetsRestore"
-			BeforeTargets="AssignTargetPaths"
-			Inputs="@(ClientAssetsInputs)"
-			Outputs="$(IntermediateOutputPath)clientassetsbuild.complete.txt">
+	<Target Name="ClientAssetsBuild" Condition="'$(ShouldRunClientAssetsBuild)' == 'true'" DependsOnTargets="ClientAssetsRestore" BeforeTargets="AssignTargetPaths" Inputs="@(ClientAssetsInputs)" Outputs="$(IntermediateOutputPath)clientassetsbuild.complete.txt">
+
+
 		<PropertyGroup>
 			<_ClientAssetsOutputFullPath>$([System.IO.Path]::GetFullPath('$(IntermediateOutputPath)clientassets'))/</_ClientAssetsOutputFullPath>
 		</PropertyGroup>
-		<MakeDir Directories="$(_ClientAssetsOutputFullPath)"/>
+
+		<MakeDir Directories="$(_ClientAssetsOutputFullPath)" />
 		<Exec Command="$(ClientAssetsBuildCommand) -- $(ClientAssetsBuildOutputParameter) $(_ClientAssetsOutputFullPath)" WorkingDirectory="$(ClientAssetsDirectory)" />
 
 		<ItemGroup>
-			<_ClientAssetsBuildOutput Include="$(_ClientAssetsOutputFullPath)clientassets\**"></_ClientAssetsBuildOutput>
+			<_ClientAssetsBuildOutput Include="$(IntermediateOutputPath)clientassets\**"></_ClientAssetsBuildOutput>
 		</ItemGroup>
 		<WriteLinesToFile File="$(IntermediateOutputPath)clientassetsbuild.complete.txt" Lines="@(_ClientAssetsBuildOutput)" />
 	</Target>
-	<Target Name="DefineCLientAssets"
-			AfterTargets="ClientAssetsBuild"
-			DependsOnTargets="ResolveStaticWebAssetsConfiguration">
+	<Target Name="DefineClientAssets" AfterTargets="ClientAssetsBuild" DependsOnTargets="ResolveStaticWebAssetsConfiguration">
 		<ItemGroup>
 			<FileWrites Include="@(_ClientAssetsBuildOutput)" />
 			<FileWrites Include="$(IntermediateOutputPath)clientassetsbuild.complete.txt" />
 
-			 <Content
-        Condition="'$(TargetFrameworkIdentifier)' == '.NETCoreApp' AND $([MSBuild]::VersionLessThan('$(TargetFrameworkVersion)', '6.0')) "
-        Include="@(_ClientAssetsBuildOutput)"
-        Link="wwwroot\%(_ClientAssetsBuildOutput.RecursiveDir)\%(_ClientAssetsBuildOutput.FileName)%(_ClientAssetsBuildOutput.Extension)" />
+			<Content Condition="'$(TargetFrameworkIdentifier)' == '.NETCoreApp' AND $([MSBuild]::VersionLessThan('$(TargetFrameworkVersion)', '6.0')) "
+			         Include="@(_ClientAssetsBuildOutput)"
+			         Link="wwwroot\%(_ClientAssetsBuildOutput.RecursiveDir)\%(_ClientAssetsBuildOutput.Filename)%(_ClientAssetsBuildOutput.Extension)" />
 		</ItemGroup>
 
 		<DefineStaticWebAssets Condition="'$(TargetFrameworkIdentifier)' == '.NETCoreApp' AND $([MSBuild]::VersionGreaterThanOrEquals('$(TargetFrameworkVersion)','6.0'))"
-							   CandidateAssets="@(_ClientAssetsBuildOutput)"
-							   SourceId="$(PackageId)"
-							   SourceType="Computed"
-							   ContentRoot="$(_ClientAssetsOutputFullPath)"
-							   BasePath="$(StaticWebAssetBasePath)">
+		                       CandidateAssets="@(_ClientAssetsBuildOutput)"
+		                       SourceId="$(PackageId)"
+		                       SourceType="Computed"
+		                       ContentRoot="$(_ClientAssetsOutputFullPath)"
+		                       BasePath="$(StaticWebAssetBasePath)">
 			<Output TaskParameter="Assets" ItemName="StaticWebAsset" />
 		</DefineStaticWebAssets>
 	</Target>

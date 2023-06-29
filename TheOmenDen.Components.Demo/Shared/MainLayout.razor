@@ -1,0 +1,87 @@
+﻿@inherits LayoutComponentBase
+@layout RootLayout
+
+<Layout Sider>
+    <LayoutSider>
+        <LayoutSiderContent>
+            <Bar NavigationBreakpoint="Breakpoint.Tablet"
+                 Breakpoint="Breakpoint.Desktop"
+                 ThemeContrast="ThemeContrast.Dark"
+                 Mode="BarMode.VerticalInline"
+                 CollapseMode="BarCollapseMode.Small">
+                <BarBrand>
+                    <BarItem>
+                        <BarLink To="">
+                            Shared Components <BarIcon IconName="IconName.Code" />
+                        </BarLink>
+                    </BarItem>
+                </BarBrand>
+                <BarToggler />
+                <BarMenu>
+                    <BarStart>
+                        <BarItem>
+                            <BarLink To="">
+                                Home <BarIcon IconName="IconName.Home" />
+                            </BarLink>
+                        </BarItem>
+                        <BarItem>
+                            <BarDropdown>
+                                <BarDropdownToggle>Components <BarIcon IconName="IconName.ArrowRight" /></BarDropdownToggle>
+                                <BarDropdownMenu>
+                                    <BarDropdownItem To="/components/captcha">
+                                        ReCaptcha V3 <BarIcon IconName="IconName.CheckCircle" />
+                                    </BarDropdownItem>
+                                    <BarDropdownItem To="/components/scriptLoader">
+                                        Script Loader <BarIcon IconName="IconName.LocationArrow" />
+                                    </BarDropdownItem>
+                                </BarDropdownMenu>
+                            </BarDropdown>
+                        </BarItem>
+                    </BarStart>
+                    <BarEnd>
+                        <BarItem>
+                            <BarDropdown>
+                                <BarDropdownToggle>
+                                    External Links <BarIcon IconName="IconName.Code" />
+                                </BarDropdownToggle>
+                                <BarDropdownMenu>
+                                    <BarDropdownItem To="https://theomenden.com" Target="Target.Blank">
+                                        Official Site <BarIcon IconName="IconName.ExternalLinkSquareAlt" />
+                                    </BarDropdownItem>
+                                    <BarDropdownItem To="https://crowsagainsthumility.app" Target="Target.Blank">
+                                        Crows Against Humility <BarIcon IconName="IconName.ExternalLinkSquareAlt" />
+                                    </BarDropdownItem>
+                                    <BarDropdownItem To="https://aluthecrow.info" Target="Target.Blank">
+                                        Alu's Carrd <BarIcon IconName="IconName.ExternalLinkSquareAlt" />
+                                    </BarDropdownItem>
+                                </BarDropdownMenu>
+                            </BarDropdown>
+                        </BarItem>
+                        <BarItem>
+                            <BarLink To="https://blazorise.com" Target="Target.Blank">
+                                Powered by Blazorise <BarIcon IconName="IconName.ExternalLinkSquareAlt" />
+                            </BarLink>
+                        </BarItem>
+                    </BarEnd>
+                </BarMenu>
+            </Bar>
+        </LayoutSiderContent>
+    </LayoutSider>
+    <Layout>
+        <LayoutHeader Fixed>
+            <Bar ThemeContrast="ThemeContrast.Light"
+                 Style="background-color:#E4F1FE;"
+                 Mode="BarMode.Horizontal">
+                <BarBrand>
+                    <BarLink To="">
+                        The Omen Den <BarIcon IconName="@("bi bi-badge-tm")"></BarIcon>
+                    </BarLink>
+                </BarBrand>
+                <BarToggler />
+            </Bar>
+        </LayoutHeader>
+        <LayoutContent Padding="Padding.Is4.OnX">
+            @Body
+        </LayoutContent>
+    </Layout>
+</Layout>
