@@ -12,15 +12,16 @@ class CaptchaLoader {
         id: "captchaLoader"
     };
     _captchaUrls = new Map([
-        ["google", "https://www.google.com/recaptcha/api.js?render="],
-        ["googleEnterprise", "https://www.google.com/recaptcha/enterprise.js?render="],
-        ["recaptcha", "https://www.recaptcha.net/recaptcha/api.js?render="],
-        ["recaptchaEnterprise", "https://www.recaptcha.net/recaptcha/enterprise.js?render="]
+        ["google", "https://www.google.com/recaptcha/api.js"],
+        ["googleEnterprise", "https://www.google.com/recaptcha/enterprise.js"],
+        ["recaptcha", "https://www.recaptcha.net/recaptcha/api.js"],
+        ["recaptchaEnterprise", "https://www.recaptcha.net/recaptcha/enterprise.js"]
     ]);
-    async loadAsync(siteKey, dotNetObjRef, loadingOptions) {
+    async loadAsync(siteKey, dotNetObjRef, useRecaptchaNet = false, useEnterprise = false, loadingOptions) {
         try {
             const scriptLoader = new dynamicScriptLoader_1.ScriptLoader();
-            const url = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
+            const pathKey = this.determineCaptchaApi(useEnterprise, useRecaptchaNet);
+            const url = `${this._captchaUrls.get(pathKey)}?render=${siteKey}`;
             loadingOptions = { ...this._defaultScriptLoadingOptions, ...loadingOptions };
             await scriptLoader.loadScript(url, loadingOptions);
         }
@@ -67,6 +68,18 @@ class CaptchaLoader {
     }
     async resetAsync(widgetId) {
         grecaptcha.reset(widgetId);
+    }
+    determineCaptchaApi(useEnterprise, useRecaptchaNet) {
+        if (useEnterprise && useRecaptchaNet) {
+            return "recaptchaEnterprise";
+        }
+        if (useEnterprise) {
+            return "googleEnterprise";
+        }
+        if (useRecaptchaNet) {
+            return "recaptcha";
+        }
+        return "google";
     }
 }
 exports.CaptchaLoader = CaptchaLoader;
