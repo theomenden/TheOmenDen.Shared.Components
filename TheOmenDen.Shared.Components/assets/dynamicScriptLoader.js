@@ -8,8 +8,8 @@ class ScriptLoader {
         this._targetElement = document.head;
     }
     async loadScript(url, options = {}) {
-        const maxRetries = options.maxRetries || 3;
-        const retryDelay = options.retryInterval || 25;
+        const maxRetries = options?.maxRetries ?? 3;
+        const retryDelay = options?.retryInterval ?? 25;
         if (this.isScriptLoaded(url, options.id)) {
             this.logOutResult("Script Already Loaded");
             return;
@@ -36,7 +36,7 @@ class ScriptLoader {
             const script = document.createElement("script");
             script.src = url;
             script.onload = () => {
-                this._loadedScripts.add(url + (options.id || ""));
+                this._loadedScripts.add(url + (options?.id ?? ""));
                 this.logOutResult("Script Loaded successfully");
                 resolve();
             };
@@ -50,15 +50,15 @@ class ScriptLoader {
     }
     setScriptAttributes(script, options) {
         script.type = "text/javascript";
-        script.defer = options.isDeferred || false;
-        script.async = options.isAsync || false;
-        script.id = options.id || "";
+        script.defer = options?.isDeferred ?? true;
+        script.async = options?.isAsync ?? true;
+        script.id = options?.id ?? "";
     }
     getTargetElement(appendTo) {
         return appendTo === "head" ? this._targetElement : document.body;
     }
     isScriptLoaded(url, id) {
-        const scriptKey = url + (id || "");
+        const scriptKey = url + (id ?? "");
         return this._loadedScripts.has(scriptKey);
     }
     logOutResult(message) {

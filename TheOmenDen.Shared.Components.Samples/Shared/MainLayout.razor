@@ -1,0 +1,84 @@
+﻿@inherits LayoutComponentBase
+@layout RootLayout
+<Layout Sider>
+    <LayoutSider>
+        <LayoutSiderContent>
+            <Bar ThemeContrast="ThemeContrast.Dark"
+                 CollapseMode="BarCollapseMode.Small"
+                 NavigationBreakpoint="Breakpoint.Tablet"
+                 Breakpoint="Breakpoint.Desktop"
+                 Mode="BarMode.VerticalInline">
+                <BarBrand>
+                    Shared Components
+                </BarBrand>
+                <BarToggler />
+                <BarMenu>
+                    <BarStart>
+                        <BarItem>
+                            <BarLink To="">
+                                Home <BarIcon IconName="IconName.Home" />
+                            </BarLink>
+                        </BarItem>
+                        <BarItem>
+                            <BarDropdown>
+                                <BarDropdownToggle>
+                                    Samples <BarIcon IconName="IconName.Shapes" />
+                                </BarDropdownToggle>
+                                <BarDropdownMenu>
+                                    <BarDropdownItem>
+                                        ReCaptcha
+                                    </BarDropdownItem>
+                                    <BarDropdownItem>
+                                        Script Loader
+                                    </BarDropdownItem>
+                                </BarDropdownMenu>
+                            </BarDropdown>
+                        </BarItem>
+                    </BarStart>
+                    <BarEnd>
+                        <BarItem>
+                            <BarDropdown>
+                                <BarDropdownToggle>
+                                    The Omen Den <BarIcon IconName="IconName.PlusCircle" />
+                                </BarDropdownToggle>
+                                <BarDropdownMenu>
+                                    <BarDropdownItem To="https://theomenden.com">
+                                        Official Website <BarIcon IconName="IconName.ExternalLinkSquareAlt" />
+                                    </BarDropdownItem>
+                                    <BarDropdownItem To="https://crowsagainsthumility.app">
+                                    Crows Against Humility <BarIcon IconName="IconName.ExternalLinkSquareAlt" />
+                                    </BarDropdownItem>
+                                    <BarDropdownItem To="https://aluthecrow.info">
+                                        Alu's Carrd<BarIcon IconName="IconName.ExternalLinkSquareAlt" />
+                                    </BarDropdownItem>
+                                </BarDropdownMenu>
+                            </BarDropdown>
+                        </BarItem>
+                        <BarItem>
+                            <BarLink To="https://blazorise.com" Target="Target.Blank">
+                                Powered By Blazorise <BarIcon IconName="IconName.ExternalLinkSquareAlt"/>
+                            </BarLink>
+                        </BarItem>
+                    </BarEnd>
+                </BarMenu>
+            </Bar>
+        </LayoutSiderContent>
+    </LayoutSider>
+    <Layout>
+        <LayoutHeader>
+            <Bar Breakpoint="Breakpoint.Desktop"
+                 Background="Background.Light"
+                 ThemeContrast="ThemeContrast.Light">
+                <BarBrand>
+                    The Omen Den L.L.C. <BarIcon IconName="@("bi bi-badge-tm")" />
+                </BarBrand>
+                <BarToggler />
+                <BarMenu />
+            </Bar>
+        </LayoutHeader>
+        <LayoutContent Padding="Padding.Is4.OnX">
+            @Body
+        </LayoutContent>
+    </Layout>
+</Layout>
+

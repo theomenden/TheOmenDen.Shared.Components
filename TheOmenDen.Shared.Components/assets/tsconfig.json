@@ -3,8 +3,10 @@
     "target": "ESNext",
     "module": "CommonJS",
     "lib": [
-      "esnext",
-      "esnext.asynciterable",
+      "ES5",
+      "ES6",
+      "ESNext",
+      "ESNext.AsyncIterable",
       "dom"
     ],
     "noImplicitAny": true,

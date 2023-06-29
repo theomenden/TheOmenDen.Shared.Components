@@ -91,7 +91,7 @@ public partial class ReCaptcha : ComponentBase, IAsyncDisposable
 
 
     /// <summary>
-    /// 
+    /// Invoked when the captcha has been executed
     /// </summary>
     /// <param name="response"></param>
     /// <returns><see cref="Task"/></returns>
@@ -101,11 +101,11 @@ public partial class ReCaptcha : ComponentBase, IAsyncDisposable
         await OnCallback.InvokeAsync(response)
             .ConfigureAwait(false);
 
-        Logger.LogInformation("[Captcha Callback]: reCAPTCHA callback invoked");
+        Logger?.LogInformation("[Captcha Callback]: reCAPTCHA callback invoked");
     }
 
     /// <summary>
-    /// 
+    /// Invoked when the captcha token has expired and needs to be retried
     /// </summary>
     /// <param name="response"></param>
     /// <returns><see cref="Task"/></returns>
@@ -115,13 +115,13 @@ public partial class ReCaptcha : ComponentBase, IAsyncDisposable
         await OnExpired.InvokeAsync(response)
             .ConfigureAwait(false);
 
-        Logger.LogInformation("[Captcha Expired]: reCAPTCHA expired");
+        Logger?.LogInformation("[Captcha Expired]: reCAPTCHA expired");
     }
 
     /// <summary>
-    /// 
+    /// Provides a way to handle errors from the reCAPTCHA
     /// </summary>
-    /// <param name="response"></param>
+    /// <param name="response">The response from invoking the captcha</param>
     /// <returns><see cref="Task"/></returns>
     [JSInvokable, EditorBrowsable(EditorBrowsableState.Never)]
     public virtual async Task InvokeErrorAsync(string response)
@@ -129,7 +129,7 @@ public partial class ReCaptcha : ComponentBase, IAsyncDisposable
         await OnError.InvokeAsync(response)
             .ConfigureAwait(false);
 
-        Logger.LogError("[Captcha Error]: reCAPTCHA error");
+        Logger?.LogError("[Captcha Error]: reCAPTCHA error");
     }
 
     /// <inheritdoc />

@@ -40,8 +40,8 @@ export class ScriptLoader implements IScriptLoaderContract {
      * @public 
      */
     async loadScript(url: string, options: IScriptLoaderOptions = {}): Promise<void> {
-        const maxRetries = options.maxRetries || 3;
-        const retryDelay = options.retryInterval || 25;
+        const maxRetries = options?.maxRetries ?? 3;
+        const retryDelay = options?.retryInterval ?? 25;
 
         if (this.isScriptLoaded(url, options.id)) {
             this.logOutResult("Script Already Loaded");
@@ -69,10 +69,10 @@ export class ScriptLoader implements IScriptLoaderContract {
 
     private async loadScriptAttempt(url: string, options: IScriptLoaderOptions): Promise<void> {
         return new Promise<void>((resolve, reject) => {
-            const script = document.createElement("script") as HTMLScriptElement;
+            const script = document.createElement("script");
             script.src = url;
             script.onload = () => {
-                this._loadedScripts.add(url + (options.id || ""));
+                this._loadedScripts.add(url + (options?.id ?? ""));
                 this.logOutResult("Script Loaded successfully");
                 resolve();
             };
@@ -90,9 +90,9 @@ export class ScriptLoader implements IScriptLoaderContract {
 
     private setScriptAttributes(script: HTMLScriptElement, options: IScriptLoaderOptions): void {
         script.type = "text/javascript";
-        script.defer = options.isDeferred || false;
-        script.async = options.isAsync || false;
-        script.id = options.id || "";
+        script.defer = options?.isDeferred ?? true;
+        script.async = options?.isAsync ?? true;
+        script.id = options?.id ?? "";
     }
 
     private getTargetElement(appendTo?: "head" | "body"): HTMLElement {
@@ -100,7 +100,7 @@ export class ScriptLoader implements IScriptLoaderContract {
     }
 
     private isScriptLoaded(url: string, id?: string): boolean {
-        const scriptKey = url + (id || "");
+        const scriptKey = url + (id ?? "");
         return this._loadedScripts.has(scriptKey);
     }
 

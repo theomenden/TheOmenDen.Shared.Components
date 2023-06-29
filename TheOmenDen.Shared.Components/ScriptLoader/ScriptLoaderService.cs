@@ -7,7 +7,7 @@ namespace TheOmenDen.Shared.Components.ScriptLoader;
 /// <inheritdoc cref="IScriptLoaderService"/>
 internal sealed class ScriptLoaderService : IScriptLoaderService
 {
-    private const string ScriptLoader = "scriptLoader.loadScript";
+    private const string ScriptLoader = "window.scriptLoader.loadScript";
     private readonly IJSRuntime _jsRuntime;
     private readonly IJSInProcessRuntime? _jsInProcessRuntime;
     private readonly ILogger<ScriptLoaderService> _logger;
