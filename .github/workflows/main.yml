@@ -31,8 +31,8 @@ jobs:
       run: dotnet publish TheOmenDen.Components.Demo/TheOmenDen.Components.Demo.csproj -c Release -o release --nologo
     
     # changes the base-tag in index.html from '/' to 'BlazorGitHubPagesDemo' to match GitHub Pages repository subdirectory
-    - name: Change base-tag in index.html from / to TheOmenDen.Components.Demo
-      run: sed -i 's/<base href="\/" \/>/<base href="\/TheOmenDen.Components.Demo\/" \/>/g' release/wwwroot/index.html
+    - name: Change base-tag in index.html from / to TheOmenDen.Shared.Components
+      run: sed -i 's/<base href="\/" \/>/<base href="\/TheOmenDen.Shared.Components\/" \/>/g' release/wwwroot/index.html
     
     - name: Fix service-worker-assets.js hashes
       working-directory: release/wwwroot
