@@ -1,6 +1,8 @@
 {
   "cacheBootResources": true,
-  "config": [ ],
+  "config": [
+    "appsettings.json"
+  ],
   "debugBuild": false,
   "entryAssembly": "TheOmenDen.Components.Demo",
   "icuDataMode": 0,
@@ -23,10 +25,10 @@
       "Microsoft.AspNetCore.Components.dll": "sha256-HcFp3nEf\/ueajA0W1j6bUt6qs++DGzRyDEAmoU5YF7E=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-VLJLiFhtH2j7kHhGltrhgM6OXMP7FoGZoZLowp4jWNI=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-gIcN7oDij4zMrj4FpyEkaigVzPSC7Zoays\/Q6fuJCiM=",
-      "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-Us\/ov\/8VTmG28nkCEjI23DhBBL\/yx+LO3eq1UI1+5ww=",
+      "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-raAHlIDPX57smn9O4LkYPzgniBI87qxWU+8oOUslEBM=",
       "Microsoft.CSharp.dll": "sha256-tVRGUOqmKggAK9UYsvwlRVLKXcYDkcbQXOQ34zXxyNE=",
-      "Microsoft.Extensions.Configuration.Abstractions.dll": "sha256-X\/f4fDl2cuIRXeWHhK\/f2UqQbFioD+RU4a4CEh0zrrQ=",
-      "Microsoft.Extensions.Configuration.dll": "sha256-DBOKSPriP2JDxVbbWrLXyD3K4\/x3RBifNBWk\/q1I39M=",
+      "Microsoft.Extensions.Configuration.Abstractions.dll": "sha256-V0oRy1b46ajOla6f+2uYdfMfM1GWZHA\/i8NKvGY45rI=",
+      "Microsoft.Extensions.Configuration.dll": "sha256-Z6ygSiVPRAnzRHQZ5JyYa\/jDy07aQ24EGfrW3qUt3Ro=",
       "Microsoft.Extensions.Configuration.Json.dll": "sha256-Q5AqJneA2TZnzC0IYzBx6j\/tHRhWAeMbpH3BsV7KgWg=",
       "Microsoft.Extensions.DependencyInjection.Abstractions.dll": "sha256-\/tdGM8f+8mGCIVuIzNeT29F7lXww5eBmdi7xLX26Lzs=",
       "Microsoft.Extensions.DependencyInjection.dll": "sha256-qi0kE7rp0kdsNqdL6DyPZEeimjUGvcLT4iWQX0YnRus=",
@@ -121,8 +123,8 @@
       "System.Xml.Linq.dll": "sha256-DW8cutja2JHzqjNbCcMOfOSE5dRqmnAN9xtLlvhPZHk=",
       "System.Xml.ReaderWriter.dll": "sha256-hIv2g5bmf0rsDdT66Gu\/omjTE0O1jx4e9eooZOlaVWE=",
       "System.Xml.XDocument.dll": "sha256-crqCwuIyAPNOI5ICVkBAsx1R++Vc7\/HLrBJns2zxSN8=",
-      "TheOmenDen.Components.Demo.dll": "sha256-McJ24kmw7OmJNF\/z0FEGI9rnyTeST+yUBnrRqUcBWus=",
-      "TheOmenDen.Shared.Components.dll": "sha256-bbDbUhX9S7bLH66dUuWcgrbKCGqQJgH1v++U\/u+6QK8=",
+      "TheOmenDen.Components.Demo.dll": "sha256-83KrZ7hJk\/+2jq7qfqDDYP4lLmhKjeVV7cQEl2zsLUU=",
+      "TheOmenDen.Shared.Components.dll": "sha256-uBZxq6bf2I1DvUdSaByYMIr7MGR1jeoMph7VHlVNGnA=",
       "TheOmenDen.Shared.dll": "sha256-1nQmDvI23NT9prF4XfwhqitFDDnlj36sLAwswnAGw8c=",
       "UnicodeInformation.dll": "sha256-S+tuzHHT1Pfwhwkrl49U9ENTOmJMIn\/I9leYPLnZukE="
     },
