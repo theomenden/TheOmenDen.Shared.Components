@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Logging;
 using Microsoft.JSInterop;
 using TheOmenDen.Shared.Components.Options;
+using TheOmenDen.Shared.Guards;
 
 namespace TheOmenDen.Shared.Components.ReCAPTCHA;
 /// <summary>
@@ -17,7 +18,7 @@ public partial class ReCaptcha : ComponentBase, IAsyncDisposable
     /// <summary>
     /// The site key for the reCAPTCHA
     /// </summary>
-    [Parameter] public string? SiteKey { get; set; }
+    [Parameter, EditorRequired] public string SiteKey { get; set; } = String.Empty;
     /// <summary>
     /// The ID of the element to render the reCAPTCHA in 
     ///  Defaults to "recaptcha_container"
@@ -37,11 +38,13 @@ public partial class ReCaptcha : ComponentBase, IAsyncDisposable
     /// </summary>
     /// <remarks>See <a href="https://developers.google.com/recaptcha/docs/faq#id-like-to-hide-the-recaptcha-badge.-what-is-allowed">this part of the docs for more details</a></remarks>
     [Parameter] public bool? HideBadge { get; set; } = false;
-
+    
     /// <summary>
     /// The render parameters for the reCAPTCHA - you can supply the site key here as well
     /// </summary>
     [Parameter] public CaptchaRenderParameters? RenderParameters { get; set; } = null;
+
+    [Parameter, EditorRequired] public ExplicitCaptchaRenderParameters? ExplicitRenderingParameters { get; set; } = null;
 
     [Parameter, EditorRequired] public EventCallback<string> OnCallback { get; set; }
 
@@ -55,14 +58,12 @@ public partial class ReCaptcha : ComponentBase, IAsyncDisposable
     /// </summary>
     [Parameter, EditorRequired] public EventCallback<string> OnError { get; set; }
 
-    [Inject] protected IJSRuntime JSRuntime { get; init; }
+    [Inject] protected IJSRuntime? JsRuntime { get; init; }
 
     [Inject] protected ILogger<ReCaptcha>? Logger { get; init; }
 
     private DotNetObjectReference<ReCaptcha>? _dotNetObjectReference;
-
-    private CaptchaRenderParameters _renderParameters = CaptchaRenderParameters.Default;
-
+    
     private ReCaptchaLoaderOptions? _options;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -71,20 +72,25 @@ public partial class ReCaptcha : ComponentBase, IAsyncDisposable
         {
             try
             {
-                RenderParameters ??= _renderParameters with { SiteKey = SiteKey ?? String.Empty };
+                Guard.FromNullOrWhitespace(SiteKey, nameof(SiteKey));
 
-                _options = new ReCaptchaLoaderOptions(UseRecaptchaNet.GetValueOrDefault(false), UseEnterprise.GetValueOrDefault(false), HideBadge.GetValueOrDefault(false),
-                    RenderParameters, null, "");
+                var isExplicitRender = ExplicitRenderingParameters is not null && RenderParameters is null;
+
+                _options = new ReCaptchaLoaderOptions(SiteKey,UseRecaptchaNet.GetValueOrDefault(false), UseEnterprise.GetValueOrDefault(false), HideBadge.GetValueOrDefault(false), isExplicitRender, String.Empty);
 
                 _dotNetObjectReference = DotNetObjectReference.Create(this);
+                
+                await ReCaptchaLoaderService.LoadAsync(JsRuntime, _dotNetObjectReference, _options).ConfigureAwait(false);
 
-                await JSRuntime!.InvokeVoidAsync("window.reCaptchaInterop.loadAsync",
-                        SiteKey, _options)
-                    .ConfigureAwait(false);
+                await ReCaptchaLoaderService.RenderAsync(JsRuntime, SiteKey, _dotNetObjectReference, RenderParameters).ConfigureAwait(false);
+            }
+            catch(ArgumentNullException ex)
+            {
+                Logger?.LogError(ex, "[ReCaptcha]: SiteKey cannot be null");
             }
             catch (Exception ex)
             {
-                Logger?.LogError(ex, "Error initializing reCAPTCHA");
+                Logger?.LogError(ex, "[ReCaptcha]: Error initializing reCAPTCHA");
             }
         }
     }
@@ -132,12 +138,19 @@ public partial class ReCaptcha : ComponentBase, IAsyncDisposable
         Logger?.LogError("[Captcha Error]: reCAPTCHA error");
     }
 
+    [JSInvokable, EditorBrowsable(EditorBrowsableState.Never)]
+    public virtual Task InvokeCaptchaRenderedAsync(int widgetId)
+    {
+        Logger?.LogInformation($"[Captcha Rendered]: reCAPTCHA rendered with widget ID {widgetId}");
+        return Task.CompletedTask;
+    }
+
     /// <inheritdoc />
     public async ValueTask DisposeAsync()
     {
         if (_dotNetObjectReference is not null)
         {
-            await JSRuntime.InvokeVoidAsync("window.reCaptchaInterop.resetAsync")
+            await JsRuntime.InvokeVoidAsync("window.reCaptchaInterop.resetAsync")
                                .ConfigureAwait(false);
             _dotNetObjectReference?.Dispose();
             _dotNetObjectReference = null;

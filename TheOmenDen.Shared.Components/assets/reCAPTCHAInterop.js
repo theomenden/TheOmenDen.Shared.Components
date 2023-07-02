@@ -11,17 +11,9 @@ class CaptchaLoader {
         retryInterval: 100,
         id: "captchaLoader"
     };
-    _captchaUrls = new Map([
-        ["google", "https://www.google.com/recaptcha/api.js"],
-        ["googleEnterprise", "https://www.google.com/recaptcha/enterprise.js"],
-        ["recaptcha", "https://www.recaptcha.net/recaptcha/api.js"],
-        ["recaptchaEnterprise", "https://www.recaptcha.net/recaptcha/enterprise.js"]
-    ]);
-    async loadAsync(siteKey, dotNetObjRef, useRecaptchaNet = false, useEnterprise = false, loadingOptions) {
+    async loadAsync(url, dotNetObjRef, loadingOptions) {
         try {
             const scriptLoader = new dynamicScriptLoader_1.ScriptLoader();
-            const pathKey = this.determineCaptchaApi(useEnterprise, useRecaptchaNet);
-            const url = `${this._captchaUrls.get(pathKey)}?render=${siteKey}`;
             loadingOptions = { ...this._defaultScriptLoadingOptions, ...loadingOptions };
             await scriptLoader.loadScript(url, loadingOptions);
         }
@@ -50,36 +42,60 @@ class CaptchaLoader {
             tabindex: renderParameters?.tabindex || 0,
             badge: renderParameters?.badge || "bottomright",
             callback: async (response) => {
-                await dotNetObjRef.invokeMethodAsync("OnCaptchaResolved", response);
+                await dotNetObjRef.invokeMethodAsync("InvokeCallbackAsync", response);
             },
             "expired-callback": async () => {
-                await dotNetObjRef.invokeMethodAsync("OnCaptchaExpired");
+                await dotNetObjRef.invokeMethodAsync("InvokeExpiredAsync", "Captcha expired.");
             },
             "error-callback": async () => {
-                await dotNetObjRef.invokeMethodAsync("OnCaptchaError");
+                await dotNetObjRef.invokeMethodAsync("InvokeErrorAsync", "An error occurred while rendering captcha.");
             }
         };
         let widgetId = 0;
         grecaptcha.ready(() => {
-            const actualizedContainer = renderParameters?.container || "recaptcha_container";
+            const actualizedContainer = renderParameters?.container ?? "recaptcha_container";
+            console.info(`Rendering captcha in container: ${actualizedContainer}`);
             widgetId = grecaptcha.render(actualizedContainer, transformedParameters);
+            dotNetObjRef.invokeMethodAsync("InvokeCaptchaRenderedAsync", widgetId);
         });
-        await dotNetObjRef.invokeMethodAsync("OnCaptchaRendered", widgetId);
     }
     async resetAsync(widgetId) {
         grecaptcha.reset(widgetId);
     }
-    determineCaptchaApi(useEnterprise, useRecaptchaNet) {
-        if (useEnterprise && useRecaptchaNet) {
-            return "recaptchaEnterprise";
+    renderExplicitAsync(parameters, siteKey) {
+        const containerName = parameters?.container ?? "recaptcha_container";
+        let widgetId = 0;
+        grecaptcha.ready(() => {
+            widgetId = grecaptcha.render(containerName, {
+                sitekey: siteKey,
+                theme: parameters?.theme || "dark",
+                size: parameters?.size || "compact",
+                tabindex: parameters?.tabindex || 0,
+                badge: parameters?.badge || "bottomright",
+                callback: async (response) => {
+                    await parameters?.dotNetObjRef?.invokeMethodAsync("OnCaptchaResolved", response);
+                },
+                "expired-callback": async () => {
+                    await parameters?.dotNetObjRef?.invokeMethodAsync("OnCaptchaExpired");
+                },
+                "error-callback": async () => {
+                    await parameters?.dotNetObjRef?.invokeMethodAsync("OnCaptchaError");
+                }
+            });
+        });
+        return widgetId;
+    }
+    buildQueryParameterString(parameters) {
+        if (!parameters || parameters.entries.length === 0) {
+            return "";
         }
-        if (useEnterprise) {
-            return "googleEnterprise";
-        }
-        if (useRecaptchaNet) {
-            return "recaptcha";
-        }
-        return "google";
+        const parametersAsObject = Object.fromEntries(parameters);
+        const queryParameters = Object.keys(parameters.entries)
+            .filter((key) => parametersAsObject[key] !== undefined
+            && parametersAsObject[key] !== null)
+            .map((key) => `${key}=${parametersAsObject[key]}`)
+            .join("&");
+        return `&${queryParameters}`;
     }
 }
 exports.CaptchaLoader = CaptchaLoader;

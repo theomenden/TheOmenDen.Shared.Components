@@ -8,9 +8,9 @@ public sealed record CaptchaRenderParameters(string SiteKey,
                                  int TabIndex)
 {
     public static readonly CaptchaRenderParameters Default = new(
-        SiteKey: string.Empty,
+        SiteKey: String.Empty,
         BadgeLocation: CaptchaBadgeLocations.BottomRight,
-        Size: CaptchaSizes.Invisible,
+        Size: CaptchaSizes.Compact,
         Theme: CaptchaThemes.Light,
         TabIndex: 0);
 }

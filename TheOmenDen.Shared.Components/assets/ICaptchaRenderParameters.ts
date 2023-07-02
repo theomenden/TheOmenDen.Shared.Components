@@ -5,7 +5,7 @@ export interface ICaptchaRenderParameters {
     /**
      * The container to render the captcha in. (Default: "recaptcha_container")
      */
-    container?: string | HTMLElement;
+    container?: string;
     /**
      * The theme to use for the captcha. (Default: "dark")
      */

@@ -14,7 +14,8 @@
                                OnCallback="OnCallbackAsync"
                                OnError="OnErrorAsync"
                                OnExpired="OnExpiredAsync"
-                               RenderParameters="_lightRenderParameters"
+                               ExplicitRenderingParameters="_lightRenderParameters"
+                               RenderParameters="null"
                                ElementId="lighter_captcha" />
                 </CardBody>
             </Card>
@@ -29,7 +30,8 @@
                                OnCallback="OnCallbackAsync"
                                OnError="OnErrorAsync"
                                OnExpired="OnExpiredAsync"
-                               RenderParameters="_darkRenderParameters"
+                               ExplicitRenderingParameters="_darkRenderParameters"
+                               RenderParameters="null"
                                ElementId="darker_captcha" />
                 </CardBody>
             </Card>
@@ -42,17 +44,17 @@
     [Inject] ILogger<ReCaptchaDemo> Logger { get; init; }
     private string _recaptchaSiteKey;
 
-    private CaptchaRenderParameters _lightRenderParameters;
-    private CaptchaRenderParameters _darkRenderParameters;
+    private ExplicitCaptchaRenderParameters _lightRenderParameters;
+    private ExplicitCaptchaRenderParameters _darkRenderParameters;
 
     protected override void OnInitialized()
     {
         base.OnInitialized();
         _recaptchaSiteKey = Configuration["Captcha:SiteKey"] ?? String.Empty;
 
-        _lightRenderParameters = CaptchaRenderParameters.Default;
-        _darkRenderParameters = CaptchaRenderParameters.Default with { Theme = CaptchaThemes.Dark};
-    }
+        _lightRenderParameters = new ExplicitCaptchaRenderParameters(_recaptchaSiteKey, "lighter_captcha", CaptchaBadgeLocations.BottomLeft, CaptchaSizes.Compact, CaptchaThemes.Dark, 0);
+        _darkRenderParameters = new ExplicitCaptchaRenderParameters(_recaptchaSiteKey, "darker_captcha", CaptchaBadgeLocations.BottomLeft, CaptchaSizes.Compact, CaptchaThemes.Dark, 0);
+}
 
     private Task OnCallbackAsync(string token)
     {

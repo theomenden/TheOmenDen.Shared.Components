@@ -1,4 +1,6 @@
-﻿import { ICaptchaRenderParameters } from './ICaptchaRenderParameters';
+﻿import { ICaptchaExplicitRenderParameters } from './ICaptchaExplicitRenderParameters';
+import { ICaptchaRenderParameters } from './ICaptchaRenderParameters';
+import { IExplicitCaptchaLoaderOptions } from './IExplicitCaptchaLoaderOptions';
 import { IScriptLoaderOptions } from './IScriptLoaderOptions';
 import { ScriptLoader } from './dynamicScriptLoader';
 import { DotNet } from "@microsoft/dotnet-js-interop";
@@ -19,27 +21,17 @@ export class CaptchaLoader {
         id: "captchaLoader"
     };
 
-    private readonly _captchaUrls: Map<string, string> = new Map<string, string>([
-        ["google", "https://www.google.com/recaptcha/api.js"],
-        ["googleEnterprise", "https://www.google.com/recaptcha/enterprise.js"],
-        ["recaptcha", "https://www.recaptcha.net/recaptcha/api.js"],
-        ["recaptchaEnterprise", "https://www.recaptcha.net/recaptcha/enterprise.js"]]);
-
     /**
-     * Loads the captcha script with the provided site key, and an optional override for the default loading parameters.
-     * @param siteKey - The provided site key
+     * Loads the captcha script with the provided url, and an optional override for the default loading parameters.
+     * @param url - The captcha url
      * @param dotNetObjRef - A reference to the dotnet object that will be used to invoke the callback methods
      * @param [useRecaptchaNet=false] - Whether to use the recaptchanet endpoint, default is false
      * @param [useEnterprise=false] - whether to use the enterprise library version, default is false
      * @param loadingOptions - Optional parameters to override the default loading parameters
      */
-    async loadAsync(siteKey: string, dotNetObjRef: DotNet.DotNetObject, useRecaptchaNet: boolean = false, useEnterprise: boolean = false, loadingOptions?: IScriptLoaderOptions): Promise<void> {
+    async loadAsync(url: string, dotNetObjRef: DotNet.DotNetObject, loadingOptions?: IScriptLoaderOptions): Promise<void> {
         try {
             const scriptLoader = new ScriptLoader();
-
-            const pathKey = this.determineCaptchaApi(useEnterprise, useRecaptchaNet);
-
-            const url = `${this._captchaUrls.get(pathKey)}?render=${siteKey}`;
 
             loadingOptions = { ...this._defaultScriptLoadingOptions, ...loadingOptions };
 
@@ -50,6 +42,7 @@ export class CaptchaLoader {
             await dotNetObjRef.invokeMethodAsync("OnCaptchaError", errorMessage);
         }
     }
+
 
     /**
      * Allows the caller to execute a captcha, with an optional action parameter.
@@ -77,7 +70,7 @@ export class CaptchaLoader {
      * @param dotNetObjRef - A reference to the dotnet object that will be used to invoke the callback methods
      * @param renderParameters - Optional parameters to override the default rendering parameters
      */
-    async renderAsync(siteKey: string, dotNetObjRef: DotNet.DotNetObject, renderParameters?: ICaptchaRenderParameters): Promise<void> {
+    async renderAsync(siteKey: string, dotNetObjRef: DotNet.DotNetObject, renderParameters?: ICaptchaRenderParameters | ICaptchaExplicitRenderParameters): Promise<void> {
 
         const transformedParameters: ReCaptchaV2.Parameters = {
             sitekey: siteKey,
@@ -86,25 +79,28 @@ export class CaptchaLoader {
             tabindex: renderParameters?.tabindex || 0,
             badge: renderParameters?.badge || "bottomright",
             callback: async (response) => {
-                await dotNetObjRef.invokeMethodAsync("OnCaptchaResolved", response);
+                await dotNetObjRef.invokeMethodAsync("InvokeCallbackAsync", response);
             },
             "expired-callback": async () => {
-                await dotNetObjRef.invokeMethodAsync("OnCaptchaExpired");
+                await dotNetObjRef.invokeMethodAsync("InvokeExpiredAsync", "Captcha expired.");
             },
             "error-callback": async () => {
-                await dotNetObjRef.invokeMethodAsync("OnCaptchaError");
+                await dotNetObjRef.invokeMethodAsync("InvokeErrorAsync", "An error occurred while rendering captcha.");
             }
         };
 
         let widgetId = 0;
 
         grecaptcha.ready(() => {
-            const actualizedContainer = renderParameters?.container || "recaptcha_container";
+            const actualizedContainer = renderParameters?.container ?? "recaptcha_container";
+
+            console.info(`Rendering captcha in container: ${actualizedContainer}`);
 
             widgetId = grecaptcha.render(actualizedContainer, transformedParameters);
+            
+            dotNetObjRef.invokeMethodAsync("InvokeCaptchaRenderedAsync", widgetId);
         });
 
-        await dotNetObjRef.invokeMethodAsync("OnCaptchaRendered", widgetId);
     }
 
     /**
@@ -116,19 +112,19 @@ export class CaptchaLoader {
         grecaptcha.reset(widgetId);
     }
 
-    private determineCaptchaApi(useEnterprise: boolean, useRecaptchaNet: boolean): string {
-        if (useEnterprise && useRecaptchaNet) {
-            return "recaptchaEnterprise";
+    private buildQueryParameterString(parameters: Map<string,any>): string {
+        if (!parameters || parameters.entries.length === 0) {
+            return "";
         }
 
-        if (useEnterprise) {
-            return "googleEnterprise";
-        }
+        const parametersAsObject = Object.fromEntries(parameters);
 
-        if (useRecaptchaNet) {
-            return "recaptcha";
-        }
+        const queryParameters =  Object.keys(parameters.entries)
+        .filter((key) =>   parametersAsObject[key] !== undefined
+                        && parametersAsObject[key] !== null)
+        .map((key) => `${key}=${parametersAsObject[key]}`)
+        .join("&");
 
-        return "google";
+        return `&${queryParameters}`;
     }
 }
