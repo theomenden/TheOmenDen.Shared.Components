@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheOmenDen.Shared.Components", "TheOmenDen.Shared.Components\TheOmenDen.Shared.Components.csproj", "{D12D0AC7-47E0-4EC0-9F9F-DBC3B7492C4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheOmenDen.Components.Demo", "TheOmenDen.Components.Demo\TheOmenDen.Components.Demo.csproj", "{362CDDD1-F75C-4954-887B-016B65CFE7E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheOmenDen.Components.Demo", "TheOmenDen.Components.Demo\TheOmenDen.Components.Demo.csproj", "{362CDDD1-F75C-4954-887B-016B65CFE7E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

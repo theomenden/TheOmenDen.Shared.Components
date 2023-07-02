@@ -6,4 +6,5 @@ public sealed record ExplicitCaptchaRenderParameters(
     string Container,
     CaptchaBadgeLocations BadgeLocation,
     CaptchaSizes Size,
+    CaptchaThemes Theme,
     int TabIndex);

@@ -1,0 +1,74 @@
+﻿@page "/components/captcha"
+@using TheOmenDen.Shared.Components.Options
+<Jumbotron>
+    <JumbotronTitle>ReCaptcha V3</JumbotronTitle>
+    <JumbotronSubtitle>ReCaptcha V3 is a component that allows you to use Google's ReCaptcha V3 in your Blazor application.</JumbotronSubtitle>
+</Jumbotron>
+<Container Fluid>
+    <Row>
+        <Column>
+            <Card Background="Background.Light">
+                <CardBody TextColor="TextColor.Dark">
+                    <CardTitle>ReCaptcha V3 on a light scheme</CardTitle>
+                    <ReCaptcha SiteKey="@_recaptchaSiteKey"
+                               OnCallback="OnCallbackAsync"
+                               OnError="OnErrorAsync"
+                               OnExpired="OnExpiredAsync"
+                               RenderParameters="_lightRenderParameters"
+                               ElementId="lighter_captcha" />
+                </CardBody>
+            </Card>
+        </Column>
+    </Row>
+    <Row>
+        <Column>
+            <Card>
+                <CardBody TextColor="TextColor.Dark">
+                    <CardTitle>ReCaptcha V3 on a dark scheme</CardTitle>
+                    <ReCaptcha SiteKey="@_recaptchaSiteKey"
+                               OnCallback="OnCallbackAsync"
+                               OnError="OnErrorAsync"
+                               OnExpired="OnExpiredAsync"
+                               RenderParameters="_darkRenderParameters"
+                               ElementId="darker_captcha" />
+                </CardBody>
+            </Card>
+        </Column>
+    </Row>
+</Container>
+@code {
+
+    [Inject] IConfiguration Configuration { get; init; }
+    [Inject] ILogger<ReCaptchaDemo> Logger { get; init; }
+    private string _recaptchaSiteKey;
+
+    private CaptchaRenderParameters _lightRenderParameters;
+    private CaptchaRenderParameters _darkRenderParameters;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        _recaptchaSiteKey = Configuration["Captcha:SiteKey"] ?? String.Empty;
+
+        _lightRenderParameters = CaptchaRenderParameters.Default;
+        _darkRenderParameters = CaptchaRenderParameters.Default with { Theme = CaptchaThemes.Dark};
+    }
+
+    private Task OnCallbackAsync(string token)
+    {
+        Logger.LogInformation("[Captcha Demo]Callback: {Token}", token);
+        return Task.CompletedTask;
+    }
+
+    private Task OnErrorAsync(string error)
+    {
+        Logger.LogInformation("[Captcha Demo]Error: {Error}", error);
+        return Task.CompletedTask;
+    }
+
+    private Task OnExpiredAsync()
+    {
+        Logger.LogInformation("[Captcha Demo] Expired At: {Time}", DateTime.UtcNow.ToShortTimeString());
+        return Task.CompletedTask;
+    }
+}

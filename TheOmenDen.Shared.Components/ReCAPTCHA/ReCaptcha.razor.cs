@@ -35,8 +35,13 @@ public partial class ReCaptcha : ComponentBase, IAsyncDisposable
     /// <summary>
     /// Allows you to hide the reCAPTCHA badge
     /// </summary>
+    /// <remarks>See <a href="https://developers.google.com/recaptcha/docs/faq#id-like-to-hide-the-recaptcha-badge.-what-is-allowed">this part of the docs for more details</a></remarks>
     [Parameter] public bool? HideBadge { get; set; } = false;
 
+    /// <summary>
+    /// The render parameters for the reCAPTCHA - you can supply the site key here as well
+    /// </summary>
+    [Parameter] public CaptchaRenderParameters? RenderParameters { get; set; } = null;
 
     [Parameter, EditorRequired] public EventCallback<string> OnCallback { get; set; }
 
@@ -56,7 +61,7 @@ public partial class ReCaptcha : ComponentBase, IAsyncDisposable
 
     private DotNetObjectReference<ReCaptcha>? _dotNetObjectReference;
 
-    private RenderParameters _renderParameters = RenderParameters.Default;
+    private CaptchaRenderParameters _renderParameters = CaptchaRenderParameters.Default;
 
     private ReCaptchaLoaderOptions? _options;
 
@@ -66,10 +71,10 @@ public partial class ReCaptcha : ComponentBase, IAsyncDisposable
         {
             try
             {
-                _renderParameters = _renderParameters with { SiteKey = SiteKey ?? String.Empty };
+                RenderParameters ??= _renderParameters with { SiteKey = SiteKey ?? String.Empty };
 
                 _options = new ReCaptchaLoaderOptions(UseRecaptchaNet.GetValueOrDefault(false), UseEnterprise.GetValueOrDefault(false), HideBadge.GetValueOrDefault(false),
-                    RenderParameters.Default, null, "");
+                    RenderParameters, null, "");
 
                 _dotNetObjectReference = DotNetObjectReference.Create(this);
 
