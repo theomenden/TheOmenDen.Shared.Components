@@ -62,29 +62,6 @@ class CaptchaLoader {
     async resetAsync(widgetId) {
         grecaptcha.reset(widgetId);
     }
-    renderExplicitAsync(parameters, siteKey) {
-        const containerName = parameters?.container ?? "recaptcha_container";
-        let widgetId = 0;
-        grecaptcha.ready(() => {
-            widgetId = grecaptcha.render(containerName, {
-                sitekey: siteKey,
-                theme: parameters?.theme || "dark",
-                size: parameters?.size || "compact",
-                tabindex: parameters?.tabindex || 0,
-                badge: parameters?.badge || "bottomright",
-                callback: async (response) => {
-                    await parameters?.dotNetObjRef?.invokeMethodAsync("OnCaptchaResolved", response);
-                },
-                "expired-callback": async () => {
-                    await parameters?.dotNetObjRef?.invokeMethodAsync("OnCaptchaExpired");
-                },
-                "error-callback": async () => {
-                    await parameters?.dotNetObjRef?.invokeMethodAsync("OnCaptchaError");
-                }
-            });
-        });
-        return widgetId;
-    }
     buildQueryParameterString(parameters) {
         if (!parameters || parameters.entries.length === 0) {
             return "";
