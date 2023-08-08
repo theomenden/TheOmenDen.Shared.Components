@@ -73,7 +73,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-kV6rh+963EYMO1eUXwQUux4h78WnF8l\/ow8WcyUDuqg=",
+      "hash": "sha256-4GtGS153Uex0ERIjUW+Ji9kFg7yEyDh7A0f5T3DSVzc=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -121,7 +121,7 @@
       "url": "_framework\/Blazorise.SpinKit.dll"
     },
     {
-      "hash": "sha256-21Zu8C\/+kwUsYOvtOUsCu0ivZvgSdxQV7OJuMX1DLK0=",
+      "hash": "sha256-RgcS7WLIphAFBMs06tdpYekQsNQJMF9qpgNfSLo4KMA=",
       "url": "_framework\/JetBrains.Annotations.dll"
     },
     {
@@ -129,19 +129,19 @@
       "url": "_framework\/Markdig.dll"
     },
     {
-      "hash": "sha256-dgp6XMNM7MnnpdO7PE2rzRer0BCIH+q4D0vigJoBFzI=",
+      "hash": "sha256-ezUpemBE\/cgz+dLo+kdtZ434sLf396L4MEkl0xsMpfk=",
       "url": "_framework\/Microsoft.AspNetCore.Components.dll"
     },
     {
-      "hash": "sha256-jyBST2NPFhPabYsUOepD8kYj0jqjgAzN9QAp4l5TUEc=",
+      "hash": "sha256-p+Lq\/dWkUrrhz5jZteG5dQV1nyUCIL60Pal7DW5BZio=",
       "url": "_framework\/Microsoft.AspNetCore.Components.Forms.dll"
     },
     {
-      "hash": "sha256-Eu9tPOZgE9kVMrGbX+RcIe+7IpMQwb7RuhLF6VzKNwU=",
+      "hash": "sha256-9MDylmGur5tBSKsGiD5mUVXHu+yquFJMcHHVw14gkP0=",
       "url": "_framework\/Microsoft.AspNetCore.Components.Web.dll"
     },
     {
-      "hash": "sha256-fCk0aheVJTKq3m3Z+fhcpyV8jse37wK5AdtqV9cKF+0=",
+      "hash": "sha256-QuZtM+A0T9C828Fb53tp+FOllIr\/Mkh9u4S7DltTjR0=",
       "url": "_framework\/Microsoft.AspNetCore.Components.WebAssembly.dll"
     },
     {
@@ -185,11 +185,11 @@
       "url": "_framework\/Microsoft.Extensions.Primitives.dll"
     },
     {
-      "hash": "sha256-kQiEwsKnMP7OEB+IJ5LwLSfo7iu8ALqI84tg73NuEQg=",
+      "hash": "sha256-NEmMlt3JvdgN4k6mxEs59+ZbRvCPUqCUcOx4EWUnXSY=",
       "url": "_framework\/Microsoft.JSInterop.dll"
     },
     {
-      "hash": "sha256-Fibw4jtnMD0se9VIfLv5hPcrbAm7ipCW+RN8CfPIDkY=",
+      "hash": "sha256-rCEiCTvZ4q9Hh8faiYWMd8w8UxYteM1bNxGJ376zsmU=",
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
@@ -533,11 +533,11 @@
       "url": "_framework\/System.Xml.XDocument.dll"
     },
     {
-      "hash": "sha256-7hamNApp7g5ZfvgI9TSHly3zdbM7Y0Ye5MIYCpve4QU=",
+      "hash": "sha256-P2H0aANl4MaVbBDaLAR3vLelLuSADModtPMH2XFGVsk=",
       "url": "_framework\/TheOmenDen.Components.Demo.dll"
     },
     {
-      "hash": "sha256-luWFpZSuM8CV1sXGVA+5pa5Ve5Njjs0JuqjJaALgzYk=",
+      "hash": "sha256-YqxAjDo4XudH3Czzj5rzjiJwXcnd3bJKyXs+7aC2YSs=",
       "url": "_framework\/TheOmenDen.Shared.Components.dll"
     },
     {
@@ -777,5 +777,5 @@
       "url": "_content\/TheOmenDen.Shared.Components\/omenjs.min.js.map.gz"
     }
   ],
-  "version": "Y8vqhN4c"
+  "version": "tpddX3M2"
 };
