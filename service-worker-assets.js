@@ -73,7 +73,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-4GtGS153Uex0ERIjUW+Ji9kFg7yEyDh7A0f5T3DSVzc=",
+      "hash": "sha256-jvK1a3h8g4JT1qLMdVUJPavKZab3L7scBn9AnICwEgg=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -93,7 +93,7 @@
       "url": "_framework\/Blazorise.Components.dll"
     },
     {
-      "hash": "sha256-qrDnYrp4zzo8BSMkg2l6cM8IPfl5TFxqQo6jsjLoqao=",
+      "hash": "sha256-7cnZ4W\/KR5AONKn49ECmaSneWG0SwhrM\/Az7hqbs4iM=",
       "url": "_framework\/Blazorise.dll"
     },
     {
@@ -129,19 +129,19 @@
       "url": "_framework\/Markdig.dll"
     },
     {
-      "hash": "sha256-ezUpemBE\/cgz+dLo+kdtZ434sLf396L4MEkl0xsMpfk=",
+      "hash": "sha256-dgp6XMNM7MnnpdO7PE2rzRer0BCIH+q4D0vigJoBFzI=",
       "url": "_framework\/Microsoft.AspNetCore.Components.dll"
     },
     {
-      "hash": "sha256-p+Lq\/dWkUrrhz5jZteG5dQV1nyUCIL60Pal7DW5BZio=",
+      "hash": "sha256-jyBST2NPFhPabYsUOepD8kYj0jqjgAzN9QAp4l5TUEc=",
       "url": "_framework\/Microsoft.AspNetCore.Components.Forms.dll"
     },
     {
-      "hash": "sha256-9MDylmGur5tBSKsGiD5mUVXHu+yquFJMcHHVw14gkP0=",
+      "hash": "sha256-Eu9tPOZgE9kVMrGbX+RcIe+7IpMQwb7RuhLF6VzKNwU=",
       "url": "_framework\/Microsoft.AspNetCore.Components.Web.dll"
     },
     {
-      "hash": "sha256-QuZtM+A0T9C828Fb53tp+FOllIr\/Mkh9u4S7DltTjR0=",
+      "hash": "sha256-fCk0aheVJTKq3m3Z+fhcpyV8jse37wK5AdtqV9cKF+0=",
       "url": "_framework\/Microsoft.AspNetCore.Components.WebAssembly.dll"
     },
     {
@@ -185,11 +185,11 @@
       "url": "_framework\/Microsoft.Extensions.Primitives.dll"
     },
     {
-      "hash": "sha256-NEmMlt3JvdgN4k6mxEs59+ZbRvCPUqCUcOx4EWUnXSY=",
+      "hash": "sha256-kQiEwsKnMP7OEB+IJ5LwLSfo7iu8ALqI84tg73NuEQg=",
       "url": "_framework\/Microsoft.JSInterop.dll"
     },
     {
-      "hash": "sha256-rCEiCTvZ4q9Hh8faiYWMd8w8UxYteM1bNxGJ376zsmU=",
+      "hash": "sha256-Fibw4jtnMD0se9VIfLv5hPcrbAm7ipCW+RN8CfPIDkY=",
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
@@ -533,11 +533,11 @@
       "url": "_framework\/System.Xml.XDocument.dll"
     },
     {
-      "hash": "sha256-P2H0aANl4MaVbBDaLAR3vLelLuSADModtPMH2XFGVsk=",
+      "hash": "sha256-UTrSqL+kBVNkl9T\/oDBLQSHAUX+zb+Aowmpp+Jn4roU=",
       "url": "_framework\/TheOmenDen.Components.Demo.dll"
     },
     {
-      "hash": "sha256-YqxAjDo4XudH3Czzj5rzjiJwXcnd3bJKyXs+7aC2YSs=",
+      "hash": "sha256-HhX3XO03kXbUdjlWrB6Ry0QH2y7nFHh6bV+ecFzjou4=",
       "url": "_framework\/TheOmenDen.Shared.Components.dll"
     },
     {
@@ -637,7 +637,7 @@
       "url": "_content\/Blazorise\/breakpoint.js"
     },
     {
-      "hash": "sha256-RYWhKbHqvNh2fP31scl35g5mxYjBtstJ7DJQhHlAaEE=",
+      "hash": "sha256-ZSOazit+6ow+ta4vlY9XYr3yd2OwwAY7hzSZsSjy6WI=",
       "url": "_content\/Blazorise\/button.js"
     },
     {
@@ -645,31 +645,31 @@
       "url": "_content\/Blazorise\/closable.js"
     },
     {
-      "hash": "sha256-MdjlS6KALG5RgkbD0c8km8IL02b2wrSdmNvTho2a\/bk=",
+      "hash": "sha256-h9wtYJxQ2+G+oBptM2XbhmY7G+iOyRT6tCrQeG8gC1A=",
       "url": "_content\/Blazorise\/colorPicker.js"
     },
     {
-      "hash": "sha256-zAwAByAgqVJToqUtBBISYh0bAdD13mpSmokD7DAqJRo=",
+      "hash": "sha256-yqEAA0pbj3SiSqKJmYJM\/XrMiy\/o\/7DD8njq5EnIvA0=",
       "url": "_content\/Blazorise\/datePicker.js"
     },
     {
-      "hash": "sha256-18O3EPdm0BUB1024WgDJx2WwBkHzCYO4e5SCWeWRybU=",
+      "hash": "sha256-ea1U4FvlIiiry7y\/njTJB3uj0f9+oaxBjxJWdt3FKv0=",
       "url": "_content\/Blazorise\/dragDrop.js"
     },
     {
-      "hash": "sha256-S3ZZ4IKKQQQU6q\/MLL5LMHOEhyuCPyWSidaJwTxqNyY=",
+      "hash": "sha256-88BThBavEE24oyU0mwMFlrW+ipKXB3S8Gpr5NFQR154=",
       "url": "_content\/Blazorise\/dropdown.js"
     },
     {
-      "hash": "sha256-1W5nZN\/ig1VX+gHU8BendnQTqFHh5FuNBWEvrKQzSYk=",
+      "hash": "sha256-2UK7Mhe9Mete3YpQILQhGfKbiAJVQ6bspuuHz9G\/mR8=",
       "url": "_content\/Blazorise\/fileEdit.js"
     },
     {
-      "hash": "sha256-KzTASUPKn7oNYR6UYGIENrqgyz04LV0JaR1OPN5oP2g=",
+      "hash": "sha256-+aqqamT75uoI5DRG1nL8Ty99iY4ZwgclaQmguWlG6cU=",
       "url": "_content\/Blazorise\/filePicker.js"
     },
     {
-      "hash": "sha256-z5A1p\/5toRGj1UxHsY+twXYV415byR6m7p\/4f4\/v8II=",
+      "hash": "sha256-0FfmxN5gPARkA5T8MeJ4o5JYBG5bUj+Rp\/o8eXKDlGw=",
       "url": "_content\/Blazorise\/inputMask.js"
     },
     {
@@ -677,11 +677,11 @@
       "url": "_content\/Blazorise\/io.js"
     },
     {
-      "hash": "sha256-x9q3dpZ2D+nlLodxgHmlqV2Sp4EQn5sahVFBQnt+wCQ=",
+      "hash": "sha256-daIjua7iBhOR4ofNNyyIb0XPT81URFUHjIQ30dF6xHE=",
       "url": "_content\/Blazorise\/memoEdit.js"
     },
     {
-      "hash": "sha256-HGjF98LRdqKqAer4p0twm7p496yDpcGLgZgnDAAs9zQ=",
+      "hash": "sha256-Q1QI8gju\/gKRQVKMzgaxi8Rf3ootCFULMX+IIixvW94=",
       "url": "_content\/Blazorise\/numericPicker.js"
     },
     {
@@ -693,11 +693,11 @@
       "url": "_content\/Blazorise\/popper.js"
     },
     {
-      "hash": "sha256-3qXrMunYO6WP1yJfB3PZfn8lWmONFe6rio3uKKq1UEM=",
+      "hash": "sha256-5KIZuBB0uov9zRQyCNVcJJ8zQX7pdCGelD4DEXtho\/Y=",
       "url": "_content\/Blazorise\/table.js"
     },
     {
-      "hash": "sha256-O91et6vx5\/AGpJqBnvfwUPnti4gGlC9hVNb0UepXj5s=",
+      "hash": "sha256-tq+evXnr+fRNYn6tA\/aKRFlWl7LWYk90vMzH4B0Z0SQ=",
       "url": "_content\/Blazorise\/textEdit.js"
     },
     {
@@ -705,15 +705,15 @@
       "url": "_content\/Blazorise\/theme.js"
     },
     {
-      "hash": "sha256-CyttsXH8853OwI1xKhZCpLQ6BVfFXFmUFay\/xWnWF8Q=",
+      "hash": "sha256-SDgUE5vBNeWPRoBkR2mcFw\/1TrC5MCDtizkZX9tbhPU=",
       "url": "_content\/Blazorise\/timePicker.js"
     },
     {
-      "hash": "sha256-1A5yFVAnTNgL5RMNYBvE3QVa3Boe3LdPtXpl9HPMkgA=",
+      "hash": "sha256-s61nDD\/1ZNynpVpKzpyrLEd\/2SXwz0i27BERszRcyHo=",
       "url": "_content\/Blazorise\/tooltip.js"
     },
     {
-      "hash": "sha256-yEhunmoAj2cF1rkGhVohqDeWw5CWUbWEbrOtzv0zH2o=",
+      "hash": "sha256-\/EPEOEJ8zeFtXy+wqj\/3GdmrzdzICkDg9bRsUWGteHw=",
       "url": "_content\/Blazorise\/utilities.js"
     },
     {
@@ -777,5 +777,5 @@
       "url": "_content\/TheOmenDen.Shared.Components\/omenjs.min.js.map.gz"
     }
   ],
-  "version": "tpddX3M2"
+  "version": "sfVvheqK"
 };
