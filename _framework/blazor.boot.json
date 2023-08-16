@@ -10,13 +10,13 @@
   "resources": {
     "assembly": {
       "Ben.Demystifier.dll": "sha256-vX6k1ZeWSRlePl5B14WRM10VVle50oMuZcR5rOJEM6M=",
-      "Blazorise.Animate.dll": "sha256-Fd6TGh+UzfvY5nFl5uMdQV0NxbUL9fA7vka3r6BzAA4=",
+      "Blazorise.Animate.dll": "sha256-UX\/MmDpRRXm8rNuGK5CXWzvv9QVrAWGoU6pp5jaWOlc=",
       "Blazorise.Bootstrap5.dll": "sha256-pavUQ3lPaiT0zSgtU72bRDjPEASYVgx6ewinvSMAilY=",
       "Blazorise.Components.dll": "sha256-pEqySNXwVXrPBhZ6M7ppvfnbEuGPhHKWBG3NY3kILbI=",
       "Blazorise.dll": "sha256-6tSgmFIvWQOMWPlDkfrTOP7G1UrxpZ\/s6HGVjGGh0O0=",
       "Blazorise.Icons.Bootstrap.dll": "sha256-in68zdTAPqljzR9M4UCll8Aj5gIZkpOq7hz77bLOrY8=",
       "Blazorise.Licensing.dll": "sha256-HCvMfGG13thv3GWvUEN2Ca7avc0Bjw5kpc9h9Kk+LS0=",
-      "Blazorise.LoadingIndicator.dll": "sha256-vWsehFl5XQreQ\/Ym+HkRFtn\/gg3oz7mYsdWY3KG1SAk=",
+      "Blazorise.LoadingIndicator.dll": "sha256-JUpEMAWdeQL1vVcuywx9H1SQfmB+JnlsEbH5TNJTF6Y=",
       "Blazorise.Markdown.dll": "sha256-TZ1aZ0z9MDbCKsHtxD030dCEkI93GPEm57qJtK4qAOU=",
       "Blazorise.Snackbar.dll": "sha256-o+BFBXNTqly+xTO+uvs6uR9\/4jC+WclOaho1FO5vkcI=",
       "Blazorise.SpinKit.dll": "sha256-S7AFU601O\/tavqfM1ov0cEAj4odpTD9g7jNB4ufjBzU=",
@@ -127,7 +127,7 @@
       "System.Xml.Linq.dll": "sha256-KM6fg8NsXjq010FfHOLUOF72ocEF5hm9iORM2hGHMQc=",
       "System.Xml.ReaderWriter.dll": "sha256-TLhorzxZugrbx6KOzEuXyPtzImJmBEc5FJeWmUGGoho=",
       "System.Xml.XDocument.dll": "sha256-08hPPk8SPS3Il4cLmuRIlE\/82N0nan4r7CJHGwLch\/0=",
-      "TheOmenDen.Components.Demo.dll": "sha256-5eOqoJ2CXOiL2lZ25fzUBuoYT\/L01+Y8W5PMVyxZ6eo=",
+      "TheOmenDen.Components.Demo.dll": "sha256-5GwgNGA9CGahjcMvCwdjfJ+7GRDumVG3\/Fe5w8zhoOo=",
       "TheOmenDen.Shared.Components.dll": "sha256-BHwCYlbYFvMcnmu9vKwPat3X+dcbW4CtlWQnAD\/q9TU=",
       "TheOmenDen.Shared.dll": "sha256-1nQmDvI23NT9prF4XfwhqitFDDnlj36sLAwswnAGw8c=",
       "UnicodeInformation.dll": "sha256-S+tuzHHT1Pfwhwkrl49U9ENTOmJMIn\/I9leYPLnZukE="
