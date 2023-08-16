@@ -10,7 +10,7 @@
   "resources": {
     "assembly": {
       "Ben.Demystifier.dll": "sha256-vX6k1ZeWSRlePl5B14WRM10VVle50oMuZcR5rOJEM6M=",
-      "Blazorise.Animate.dll": "sha256-UX\/MmDpRRXm8rNuGK5CXWzvv9QVrAWGoU6pp5jaWOlc=",
+      "Blazorise.Animate.dll": "sha256-Fd6TGh+UzfvY5nFl5uMdQV0NxbUL9fA7vka3r6BzAA4=",
       "Blazorise.Bootstrap5.dll": "sha256-pavUQ3lPaiT0zSgtU72bRDjPEASYVgx6ewinvSMAilY=",
       "Blazorise.Components.dll": "sha256-pEqySNXwVXrPBhZ6M7ppvfnbEuGPhHKWBG3NY3kILbI=",
       "Blazorise.dll": "sha256-6tSgmFIvWQOMWPlDkfrTOP7G1UrxpZ\/s6HGVjGGh0O0=",
@@ -19,7 +19,7 @@
       "Blazorise.LoadingIndicator.dll": "sha256-vWsehFl5XQreQ\/Ym+HkRFtn\/gg3oz7mYsdWY3KG1SAk=",
       "Blazorise.Markdown.dll": "sha256-TZ1aZ0z9MDbCKsHtxD030dCEkI93GPEm57qJtK4qAOU=",
       "Blazorise.Snackbar.dll": "sha256-o+BFBXNTqly+xTO+uvs6uR9\/4jC+WclOaho1FO5vkcI=",
-      "Blazorise.SpinKit.dll": "sha256-TzZNJ0X4kgvWpLiMkiZ4r9yKEdhDrLI+GQSu88rFKII=",
+      "Blazorise.SpinKit.dll": "sha256-S7AFU601O\/tavqfM1ov0cEAj4odpTD9g7jNB4ufjBzU=",
       "DeepCloner.dll": "sha256-0z32Jj39dxvhAObryD60N1OemfRoFvti9RLp8VkWXSI=",
       "JetBrains.Annotations.dll": "sha256-RgcS7WLIphAFBMs06tdpYekQsNQJMF9qpgNfSLo4KMA=",
       "Markdig.dll": "sha256-\/OHBGJDFwFENvDYSXQ4QGozJaA3js46HvXZ5IWM9qpg=",
@@ -127,7 +127,7 @@
       "System.Xml.Linq.dll": "sha256-KM6fg8NsXjq010FfHOLUOF72ocEF5hm9iORM2hGHMQc=",
       "System.Xml.ReaderWriter.dll": "sha256-TLhorzxZugrbx6KOzEuXyPtzImJmBEc5FJeWmUGGoho=",
       "System.Xml.XDocument.dll": "sha256-08hPPk8SPS3Il4cLmuRIlE\/82N0nan4r7CJHGwLch\/0=",
-      "TheOmenDen.Components.Demo.dll": "sha256-SIuF3egEC2bKyJv7b5gElnokeYuwBhJzTqv8SB3VKIk=",
+      "TheOmenDen.Components.Demo.dll": "sha256-5eOqoJ2CXOiL2lZ25fzUBuoYT\/L01+Y8W5PMVyxZ6eo=",
       "TheOmenDen.Shared.Components.dll": "sha256-BHwCYlbYFvMcnmu9vKwPat3X+dcbW4CtlWQnAD\/q9TU=",
       "TheOmenDen.Shared.dll": "sha256-1nQmDvI23NT9prF4XfwhqitFDDnlj36sLAwswnAGw8c=",
       "UnicodeInformation.dll": "sha256-S+tuzHHT1Pfwhwkrl49U9ENTOmJMIn\/I9leYPLnZukE="
