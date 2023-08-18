@@ -73,7 +73,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-XZG3lP+K6qySaw5l4J6c1WsXD5P9hSyEt6lYyEbkKCg=",
+      "hash": "sha256-8br8ZrdLEWa9mXJzoor3dxZsMhBIj1cQBz1GgiMQKv8=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -85,11 +85,11 @@
       "url": "_framework\/Blazorise.Animate.dll"
     },
     {
-      "hash": "sha256-PDklXvLgroDRr9tlFxnqagwR7EGAGt5+HDQVyEsptS4=",
+      "hash": "sha256-L+F0goKEqlG\/LiMdnD7nXhGl3T908Z9Fp00IaSH2xTI=",
       "url": "_framework\/Blazorise.Bootstrap5.dll"
     },
     {
-      "hash": "sha256-IldM799CeZUfbkfY+c5RaUutkJxKQZZveLg64Rrehds=",
+      "hash": "sha256-XzDVHuR18pInQKxvBC2T6\/zW\/B92oB0NRvxB4cDkKSY=",
       "url": "_framework\/Blazorise.Components.dll"
     },
     {
@@ -113,7 +113,7 @@
       "url": "_framework\/Blazorise.Markdown.dll"
     },
     {
-      "hash": "sha256-43cWahzgj\/VZrBju4luIKc5SYhWycO2vl5Enk0FUDbY=",
+      "hash": "sha256-OsJye41pT7PHkaPQCeR0FSrZeeav6HVKNfkIMktQNaE=",
       "url": "_framework\/Blazorise.Snackbar.dll"
     },
     {
@@ -549,7 +549,7 @@
       "url": "_framework\/System.Xml.XDocument.dll"
     },
     {
-      "hash": "sha256-emG5ccl9alBUlvBvwoEfgmQezv5uo2aSrPlq0iF4pPE=",
+      "hash": "sha256-EyrBdzlEqOGGVFsJGlq7w6YCquvbP1ApNro2fecijf8=",
       "url": "_framework\/TheOmenDen.Components.Demo.dll"
     },
     {
@@ -589,11 +589,11 @@
       "url": "_content\/Blazorise.Bootstrap5\/blazorise.bootstrap5.min.css"
     },
     {
-      "hash": "sha256-0fIXzwG3MLVhawqAWSI23BC2DjWW9GwooZAYp89IWxQ=",
+      "hash": "sha256-JOlmrSfsWYpMWhkZdvJtubmDyEGQv7BtoVZzXt\/u1Hg=",
       "url": "_content\/Blazorise.Bootstrap5\/modal.js"
     },
     {
-      "hash": "sha256-4Q7V2gOLdETB2IyauS9jgM+YKtDpP7frtVxxgkq+xUQ=",
+      "hash": "sha256-+f0tDu0Dm1xiKEjU1dkPPF\/44qELo86wEaAjEDGLudo=",
       "url": "_content\/Blazorise.Bootstrap5\/tooltip.js"
     },
     {
@@ -801,5 +801,5 @@
       "url": "_content\/TheOmenDen.Shared.Components\/omenjs.min.js.map.gz"
     }
   ],
-  "version": "MaUbVxWj"
+  "version": "knn9vOnr"
 };
