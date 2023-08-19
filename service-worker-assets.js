@@ -73,7 +73,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-kaOoyLQX3vLlTXeFjHt80BkfrKHnnc7nlvqPTYpD688=",
+      "hash": "sha256-1KGeAPQJpBvHL2ibESBUp2W5jeo+orj5+r1DILcjoPs=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -117,7 +117,7 @@
       "url": "_framework\/Blazorise.Snackbar.dll"
     },
     {
-      "hash": "sha256-O9gSMwnSqzeArqd\/FneHCxQeBV+R0KZWrWD31eb3b7Q=",
+      "hash": "sha256-TzZNJ0X4kgvWpLiMkiZ4r9yKEdhDrLI+GQSu88rFKII=",
       "url": "_framework\/Blazorise.SpinKit.dll"
     },
     {
@@ -549,7 +549,7 @@
       "url": "_framework\/System.Xml.XDocument.dll"
     },
     {
-      "hash": "sha256-nVEC7tQNlHPCZv5al1eeiZWs9VfbEx7U5ZUAHHOhvh4=",
+      "hash": "sha256-3LnGT3t2IxRe56EGMMveJnfmVZEC6K8JVyEcXp3j1SA=",
       "url": "_framework\/TheOmenDen.Components.Demo.dll"
     },
     {
@@ -801,5 +801,5 @@
       "url": "_content\/TheOmenDen.Shared.Components\/omenjs.min.js.map.gz"
     }
   ],
-  "version": "UPpVOPSO"
+  "version": "W1b7hc6N"
 };
