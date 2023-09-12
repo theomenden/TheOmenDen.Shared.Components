@@ -73,7 +73,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-BPjDTQFdLguw\/sPnUuteZtq5\/ZBB619VtaYiPrXkmEs=",
+      "hash": "sha256-xwjG4NBMGoTxYiJYFDpfD4K8fF1Tc\/qhdenB7J+2RVw=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -133,19 +133,19 @@
       "url": "_framework\/Markdig.dll"
     },
     {
-      "hash": "sha256-vbperj\/jyEk7Mbv2QhKl\/oLjWXPJyDM7ZYMRQB2qtPs=",
+      "hash": "sha256-8ie52bXqBooXfEt++mnuY786ynhmaF4QabxvpbpVMjY=",
       "url": "_framework\/Microsoft.AspNetCore.Components.dll"
     },
     {
-      "hash": "sha256-UfkV1ukGQPnsC0kELIByVOwnBSNdIxqw1LYCShk672s=",
+      "hash": "sha256-wyOi0fosDjfFPCEucq\/KyLOoD07T0ZXjBL8YAu18PQ8=",
       "url": "_framework\/Microsoft.AspNetCore.Components.Forms.dll"
     },
     {
-      "hash": "sha256-9MDylmGur5tBSKsGiD5mUVXHu+yquFJMcHHVw14gkP0=",
+      "hash": "sha256-mKpHWgA+Q1k3H2erLjhON9ZteTh6p4IBu2FuHXYGkME=",
       "url": "_framework\/Microsoft.AspNetCore.Components.Web.dll"
     },
     {
-      "hash": "sha256-QuZtM+A0T9C828Fb53tp+FOllIr\/Mkh9u4S7DltTjR0=",
+      "hash": "sha256-dA5JX6nzuaafJK6SWV9OlZ\/rDi+BzMLgra0PbtMfAFU=",
       "url": "_framework\/Microsoft.AspNetCore.Components.WebAssembly.dll"
     },
     {
@@ -189,11 +189,11 @@
       "url": "_framework\/Microsoft.Extensions.Primitives.dll"
     },
     {
-      "hash": "sha256-NEmMlt3JvdgN4k6mxEs59+ZbRvCPUqCUcOx4EWUnXSY=",
+      "hash": "sha256-GrWO0wobqZwVhNFiZMdZeNyEet1r7y4kkOkdwKeWl\/A=",
       "url": "_framework\/Microsoft.JSInterop.dll"
     },
     {
-      "hash": "sha256-rCEiCTvZ4q9Hh8faiYWMd8w8UxYteM1bNxGJ376zsmU=",
+      "hash": "sha256-bzbqcJ6KmXNtttCdwlY3JqqzIuFo0rRDUc7qjI8CKYM=",
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
@@ -549,11 +549,11 @@
       "url": "_framework\/System.Xml.XDocument.dll"
     },
     {
-      "hash": "sha256-Aggt\/FsUg9PZatJxdsAAYf3J9ApWajNE3gtPo3UbIUs=",
+      "hash": "sha256-46HXJKhatBw3tW\/JyEqNm5QZSkGuzDpew8o1qF3ltJc=",
       "url": "_framework\/TheOmenDen.Components.Demo.dll"
     },
     {
-      "hash": "sha256-dBn1iX81Dzogk2vC8rBIPeSUOmaA3KhWY3KFHSfbXBc=",
+      "hash": "sha256-qsb4S3MEnN6Lffwvsuqyj0fp37oDr9BZyCAZOFuLQSE=",
       "url": "_framework\/TheOmenDen.Shared.Components.dll"
     },
     {
@@ -801,5 +801,5 @@
       "url": "_content\/TheOmenDen.Shared.Components\/omenjs.min.js.map.gz"
     }
   ],
-  "version": "hcK9WZsh"
+  "version": "ARxtPGLu"
 };
