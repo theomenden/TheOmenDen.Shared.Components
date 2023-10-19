@@ -73,7 +73,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-7rWOvVd\/eHxq0qLAlygGavoQUk3MNNag\/lXDPpJ4ys4=",
+      "hash": "sha256-BCn5bGO0XQp+lhKLfvrXIOvRs2AMfIb0aPWnOL6+ao8=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -97,7 +97,7 @@
       "url": "_framework\/Blazorise.dll"
     },
     {
-      "hash": "sha256-fugMNtJ4TZuCoElB4HsJ7z62xBg7F1FkfF7Mtieucu8=",
+      "hash": "sha256-uYblf1M2NzPF0DkJSkfNXWt8kIB86zXgpJvhPAMWqqg=",
       "url": "_framework\/Blazorise.Icons.Bootstrap.dll"
     },
     {
@@ -105,7 +105,7 @@
       "url": "_framework\/Blazorise.Licensing.dll"
     },
     {
-      "hash": "sha256-BtsWiqmlJuqmx7dSR1EgpWCw28y8i3knLFGVXqbxA94=",
+      "hash": "sha256-ddT7+mDIfsloVpSJN6H6+4B+d5R9dRkb6q72FWzgaGA=",
       "url": "_framework\/Blazorise.LoadingIndicator.dll"
     },
     {
@@ -549,7 +549,7 @@
       "url": "_framework\/System.Xml.XDocument.dll"
     },
     {
-      "hash": "sha256-Et6jaaMsnucnee+1GPuVWTfWCkXHU+\/sWnZHZZg1cE0=",
+      "hash": "sha256-SdJvBAJurxPZniqAZRH8+TrG9U7y2vp2Mz5twTCWvGE=",
       "url": "_framework\/TheOmenDen.Components.Demo.dll"
     },
     {
@@ -801,5 +801,5 @@
       "url": "_content\/TheOmenDen.Shared.Components\/omenjs.min.js.map.gz"
     }
   ],
-  "version": "PWr75ttN"
+  "version": "x6OJbtBa"
 };
