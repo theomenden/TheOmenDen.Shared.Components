@@ -55,7 +55,7 @@
       "Serilog.Extensions.Logging.dll": "sha256-85YCOyM1CT0q\/5pxPzmukp0IhBlR1RRNVa4YU8Zbv4Q=",
       "Serilog.Formatting.Compact.dll": "sha256-NV476RN2A+lAavGzmX35DDd5IiN1igKW4+HURe7lATA=",
       "Serilog.Formatting.Compact.Reader.dll": "sha256-hIdV5YX\/wyoXfWVcyXXYXQL6Brp+914VaJvLTXyjKGI=",
-      "Serilog.Sinks.BrowserConsole.dll": "sha256-uZGk35\/tAi1QJNMj4+4UMQQ1q+Lt+8tvw41Vn1Qh\/38=",
+      "Serilog.Sinks.BrowserConsole.dll": "sha256-FVzN0vCFWrqCKGj7L94abH8GYrtuGevqUaW2pKe0gVQ=",
       "Serilog.Sinks.Console.dll": "sha256-kNKHHBMkIXNNs7kyIefaw7IIVxefQCkuU1Xp0ywdu9k=",
       "Serilog.Sinks.Debug.dll": "sha256-2xR4bnO8DuhFXcpRthpszYhxwGiGM0owyag9O1cWY14=",
       "Serilog.Sinks.Trace.dll": "sha256-jq+r8L4TqwgNbgTmNYLX\/RuHx2HCsbdaSBtH4MLtCAA=",
@@ -127,7 +127,7 @@
       "System.Xml.Linq.dll": "sha256-5MN8DMEBxtWu5EXb3Xj9F+tp6q2tIAwGqUki3slxVy8=",
       "System.Xml.ReaderWriter.dll": "sha256-0PIRjz\/AX0JvRtBWrjw+bQBkIvTcnUFmV5w8Nekoeks=",
       "System.Xml.XDocument.dll": "sha256-WyWbc4YMIhwAScYY9o31JmyTOA\/NyznjK1RJxnLKsB4=",
-      "TheOmenDen.Components.Demo.dll": "sha256-5EADFYEBppiXg6Dd0KAJh41OBZbvHoG8jPXsk9H89lI=",
+      "TheOmenDen.Components.Demo.dll": "sha256-qkHUhEksPUG3FnBFxbZkM8oYK5GFNJOmjWNIr2EJaAs=",
       "TheOmenDen.Shared.Components.dll": "sha256-yQi\/7bgiVN3XH9\/BEMtMpIqK235CeoFjnb9XzyMmAcM=",
       "TheOmenDen.Shared.dll": "sha256-1nQmDvI23NT9prF4XfwhqitFDDnlj36sLAwswnAGw8c=",
       "UnicodeInformation.dll": "sha256-S+tuzHHT1Pfwhwkrl49U9ENTOmJMIn\/I9leYPLnZukE="
