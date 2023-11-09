@@ -73,7 +73,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-jjRHYnCGUP9vFNedk\/h+p7pE80ebjbnhykUdoK2vP\/k=",
+      "hash": "sha256-N41NE8btjRVPpwC\/tytrhZdUdlITKhGi75DlncT0BQU=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -197,7 +197,7 @@
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
-      "hash": "sha256-XEHG8GSoR25RaePMUs+8ODzE0m0b8BjQPbgbdQcAjRE=",
+      "hash": "sha256-vubRUbx3QMy7KkkKCcJCkMzZeO\/OsSyPGs5A9tQStSE=",
       "url": "_framework\/netstandard.dll"
     },
     {
@@ -205,7 +205,7 @@
       "url": "_framework\/Newtonsoft.Json.dll"
     },
     {
-      "hash": "sha256-juhTLLDPxzQBKOX\/pnY8iW+eMWZvS1eUykgXFZ\/Gjyw=",
+      "hash": "sha256-Bqi3KleFeQiQUHB\/x6dK+Zpc2YHE0lsJ57AxVtfSgsE=",
       "url": "_framework\/Serilog.dll"
     },
     {
@@ -253,7 +253,7 @@
       "url": "_framework\/Serilog.Extensions.Logging.dll"
     },
     {
-      "hash": "sha256-2fRy2CosdagB\/JaQ73H+UIgWLg6eJoc7Ho\/oSrRIsL0=",
+      "hash": "sha256-NV476RN2A+lAavGzmX35DDd5IiN1igKW4+HURe7lATA=",
       "url": "_framework\/Serilog.Formatting.Compact.dll"
     },
     {
@@ -265,7 +265,7 @@
       "url": "_framework\/Serilog.Sinks.BrowserConsole.dll"
     },
     {
-      "hash": "sha256-kNKHHBMkIXNNs7kyIefaw7IIVxefQCkuU1Xp0ywdu9k=",
+      "hash": "sha256-Jb0NBH3g2Bisq03n0F6y02dBoP\/TSZXbZCRcNAEJ3iI=",
       "url": "_framework\/Serilog.Sinks.Console.dll"
     },
     {
@@ -469,7 +469,7 @@
       "url": "_framework\/System.Runtime.CompilerServices.Unsafe.dll"
     },
     {
-      "hash": "sha256-Wgu4T90HiXZbYcO+4MEjE2oXiLErhfQBK9Pobm26ER0=",
+      "hash": "sha256-cgH3pg81sfJs8sL3BkfG+xueir3awZf6T6SIiAUs9e0=",
       "url": "_framework\/System.Runtime.dll"
     },
     {
@@ -483,10 +483,6 @@
     {
       "hash": "sha256-E4gQ1EQwK9GK6MSyDVpA+DaJdzD6PS+e9nUzF8qL6YY=",
       "url": "_framework\/System.Runtime.InteropServices.JavaScript.dll"
-    },
-    {
-      "hash": "sha256-C04YOZwXYA6uxa6UXy3SwSTQfggHYdweyFMjswmkiUE=",
-      "url": "_framework\/System.Runtime.InteropServices.RuntimeInformation.dll"
     },
     {
       "hash": "sha256-y0Kp3e\/hYE5vANpVBNNcSI+76A32qME\/PcLG8Ll\/PZ0=",
@@ -549,7 +545,7 @@
       "url": "_framework\/System.Xml.XDocument.dll"
     },
     {
-      "hash": "sha256-ysa365DM1NvHM4sgRWpY\/jGG6NVJ70urKCea3cxzGTw=",
+      "hash": "sha256-d7Ruoxszrxhhy5nQyFF0j3mcOuN3X6\/Fwr4xWAAuwMc=",
       "url": "_framework\/TheOmenDen.Components.Demo.dll"
     },
     {
@@ -801,5 +797,5 @@
       "url": "_content\/TheOmenDen.Shared.Components\/omenjs.min.js.map.gz"
     }
   ],
-  "version": "KcLb9xwA"
+  "version": "4oi2Q8QB"
 };
