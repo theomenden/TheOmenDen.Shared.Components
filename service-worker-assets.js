@@ -73,7 +73,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-XqUpnTNbup76kLOOuNZmDINT5otZ9y2lA79f67lKFGk=",
+      "hash": "sha256-jjRHYnCGUP9vFNedk\/h+p7pE80ebjbnhykUdoK2vP\/k=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -197,7 +197,7 @@
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
-      "hash": "sha256-vubRUbx3QMy7KkkKCcJCkMzZeO\/OsSyPGs5A9tQStSE=",
+      "hash": "sha256-XEHG8GSoR25RaePMUs+8ODzE0m0b8BjQPbgbdQcAjRE=",
       "url": "_framework\/netstandard.dll"
     },
     {
@@ -253,7 +253,7 @@
       "url": "_framework\/Serilog.Extensions.Logging.dll"
     },
     {
-      "hash": "sha256-NV476RN2A+lAavGzmX35DDd5IiN1igKW4+HURe7lATA=",
+      "hash": "sha256-2fRy2CosdagB\/JaQ73H+UIgWLg6eJoc7Ho\/oSrRIsL0=",
       "url": "_framework\/Serilog.Formatting.Compact.dll"
     },
     {
@@ -549,7 +549,7 @@
       "url": "_framework\/System.Xml.XDocument.dll"
     },
     {
-      "hash": "sha256-rqcN3t75IMB3CCUK8ihpNQmEik7\/A3KNMelsWIF+Kbc=",
+      "hash": "sha256-ysa365DM1NvHM4sgRWpY\/jGG6NVJ70urKCea3cxzGTw=",
       "url": "_framework\/TheOmenDen.Components.Demo.dll"
     },
     {
@@ -801,5 +801,5 @@
       "url": "_content\/TheOmenDen.Shared.Components\/omenjs.min.js.map.gz"
     }
   ],
-  "version": "umXrjIPR"
+  "version": "KcLb9xwA"
 };
