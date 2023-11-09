@@ -73,7 +73,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-kKjpiMZNZnjUg0rbVibPFEV9ZMjhQO1\/L9SR2zliMA0=",
+      "hash": "sha256-XqUpnTNbup76kLOOuNZmDINT5otZ9y2lA79f67lKFGk=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -125,7 +125,7 @@
       "url": "_framework\/DeepCloner.dll"
     },
     {
-      "hash": "sha256-XysUdafYADOhrSXqJxC9S1\/tQMKDFssEOb+5qtou+Gs=",
+      "hash": "sha256-RgcS7WLIphAFBMs06tdpYekQsNQJMF9qpgNfSLo4KMA=",
       "url": "_framework\/JetBrains.Annotations.dll"
     },
     {
@@ -205,7 +205,7 @@
       "url": "_framework\/Newtonsoft.Json.dll"
     },
     {
-      "hash": "sha256-enqZTS5bsMa\/H07uSLnDZdrEzYcddzqD1neujoeR\/aY=",
+      "hash": "sha256-juhTLLDPxzQBKOX\/pnY8iW+eMWZvS1eUykgXFZ\/Gjyw=",
       "url": "_framework\/Serilog.dll"
     },
     {
@@ -425,7 +425,7 @@
       "url": "_framework\/System.ObjectModel.dll"
     },
     {
-      "hash": "sha256-YfzLhIZH9P+R7dOuGNW0kDAJIZTahkzatsY1gRq91bY=",
+      "hash": "sha256-b20Ehc2WvZcQliDC3UxrXLIncD9e5ogrYr3b+ya37+A=",
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
@@ -549,7 +549,7 @@
       "url": "_framework\/System.Xml.XDocument.dll"
     },
     {
-      "hash": "sha256-4WEmn5bkg5Bczu7eDeZOCPtEQjCCpL132HrOzmogOls=",
+      "hash": "sha256-rqcN3t75IMB3CCUK8ihpNQmEik7\/A3KNMelsWIF+Kbc=",
       "url": "_framework\/TheOmenDen.Components.Demo.dll"
     },
     {
@@ -801,5 +801,5 @@
       "url": "_content\/TheOmenDen.Shared.Components\/omenjs.min.js.map.gz"
     }
   ],
-  "version": "Y8ujLx\/P"
+  "version": "umXrjIPR"
 };
