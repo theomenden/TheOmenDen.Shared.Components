@@ -73,7 +73,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-JhMbb0f3d8Xs09VgLAhwIQCfgzc4Q4YftJSN8rmet80=",
+      "hash": "sha256-\/DywHQ\/NuH\/Jis5ZQQWzbTWP0C1Vo4rymCggmaTRZLM=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -197,7 +197,7 @@
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
-      "hash": "sha256-3BTppqZdCWcuOy66BTzYDiGU2bBl6stwRHbD2aJ2\/xM=",
+      "hash": "sha256-vubRUbx3QMy7KkkKCcJCkMzZeO\/OsSyPGs5A9tQStSE=",
       "url": "_framework\/netstandard.dll"
     },
     {
@@ -205,7 +205,7 @@
       "url": "_framework\/Newtonsoft.Json.dll"
     },
     {
-      "hash": "sha256-juhTLLDPxzQBKOX\/pnY8iW+eMWZvS1eUykgXFZ\/Gjyw=",
+      "hash": "sha256-T84Myal52WLN23\/JKlBTk7dQMhDbgEG4HeYs\/8gqZTc=",
       "url": "_framework\/Serilog.dll"
     },
     {
@@ -257,7 +257,7 @@
       "url": "_framework\/Serilog.Formatting.Compact.dll"
     },
     {
-      "hash": "sha256-2pYe8\/I2sBN6W9dgfLCFEpX5xbfjQiHXbwtoRGHpekw=",
+      "hash": "sha256-hIdV5YX\/wyoXfWVcyXXYXQL6Brp+914VaJvLTXyjKGI=",
       "url": "_framework\/Serilog.Formatting.Compact.Reader.dll"
     },
     {
@@ -329,7 +329,7 @@
       "url": "_framework\/System.Data.Common.dll"
     },
     {
-      "hash": "sha256-DpERuzyhWVv6\/m4KmeT0Sq1XT+1uTCK9UiR3t3zk\/C8=",
+      "hash": "sha256-BMbi37GJEgt30dLR\/nf2uCeR3mkhRaNvObkN0Cy1Dtg=",
       "url": "_framework\/System.Diagnostics.DiagnosticSource.dll"
     },
     {
@@ -549,7 +549,7 @@
       "url": "_framework\/System.Xml.XDocument.dll"
     },
     {
-      "hash": "sha256-7JjrWIZjYQBOj\/gsXrkE2t7zUrfiTkPWz4+gnwdoitY=",
+      "hash": "sha256-9AhZ+Le4BztCyaUg+nNzYxhl0mxfca5i4aXktzYZsIw=",
       "url": "_framework\/TheOmenDen.Components.Demo.dll"
     },
     {
@@ -801,5 +801,5 @@
       "url": "_content\/TheOmenDen.Shared.Components\/omenjs.min.js.map.gz"
     }
   ],
-  "version": "qpxbhZxt"
+  "version": "k92cfg1v"
 };
