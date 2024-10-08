@@ -9,7 +9,7 @@
   "author": "Alu - The Omen Den",
   "license": "MIT",
   "dependencies": {
-    "@microsoft/dotnet-js-interop": "^7.0.7",
+    "@microsoft/dotnet-js-interop": "^8.0.0",
     "@types/grecaptcha": "^3.0.4"
   },
   "devDependencies": {
